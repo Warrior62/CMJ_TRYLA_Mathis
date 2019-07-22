@@ -33,14 +33,15 @@
 		padding: 0 1% 1% 1%;
 		background-color: lightblue;
 	}
-	#players_area input[type='text'] {float:right;border-radius:5px}
+	#players_area input[type='text'] {float:right;border-radius:5px;text-align:center;}
 	#players_area h2, #players_area p {text-align:center;}
+	input[id='player1']+div+div {display:inline-block;margin-top:15px;margin-left:27.5px;}
 	p,label {font-size:12px;}
-	button{width:70px;margin-left:65px;margin-top:15px;}
 </style>
 
 <script src="jquery.js"></script>
 <script src="avalam.js"></script>
+<script src="players.js"></script>
 
 <script>
  
@@ -200,10 +201,11 @@ les coordonnées correspondent aux centres, en css, on place le côté haut-gauc
 	<p><i>Please enter names of both players:</i></p>
 	<label for='player1'>Player°1:</label>
 	<input type='text' id='player1'/ >
-	<br />
-	<label for='player2'>Player°2:</label>
-	<input type='text' id='player2'/ >
-	<button>Confirm</button>
+	<div id='playerAdded'></div>
+	<div>
+		<button id='buttonAdd' onclick='addPlayer()'>Add a player</button>
+		<button id='buttonConfirm'>Confirm</button>
+	</div>
 </div>
 
 <div id="avalam">
