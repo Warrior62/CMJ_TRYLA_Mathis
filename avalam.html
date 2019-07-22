@@ -5,7 +5,7 @@
 <!-- **** H E A D **** -->
 <head>	
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>Avalam-standalone</title>
+	<title>Avalam</title>
 
 <style>
 	#avalam{
@@ -21,6 +21,21 @@
 	.nombre {position:absolute;top:22px;left:28px;
 		font-family:courier;font-weight:bold;font-size:18pt;}	
 	.rouge img, .jaune img {width:70px;height:70px;}
+
+/*CSS added by Mathis*/
+
+	#players_area{
+		position:fixed;
+		top:250px;
+		border:2px black solid;
+		border-radius:10px;
+		max-width:200px;
+		padding: 0 1% 1% 1%;
+		background-color: lightblue;
+	}
+	#players_area input[type='text'] {float:right;}
+	#players_area h2, #players_area p {text-align:center;}
+	p,label {font-size:12px;}
 </style>
 
 <script src="jquery.js"></script>
@@ -177,7 +192,17 @@ les coordonnées correspondent aux centres, en css, on place le côté haut-gauc
 <body>
 
 
-<h1>Avalam-standalone</h1>
+<h1>Avalam</h1>
+
+<div id='players_area'>
+	<h2>Names</h2>
+	<p><i>Please enter names of both players:</i></p>
+	<label for='player1'>Player°1:</label>
+	<input type='text' id='player1'/ >
+	<br />
+	<label for='player2'>Player°2:</label>
+	<input type='text' id='player2'/ >
+</div>
 
 <div id="avalam">
 	<img src="pictures/avalam_numerote.png" />
