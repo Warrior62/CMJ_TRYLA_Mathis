@@ -96,11 +96,11 @@ $(document).ready(function(){
 				$(this).removeClass("jaune").removeClass("rouge");  
 				if (position[indiceDepart].col == "1") {
 					$(this).addClass("jaune"); 
-					$("img",$(this)).attr("src","jaune.png");
+					$("img",$(this)).attr("src","pictures/jaune.png");
 					position[indice].col = "1";
 				} else {
 					$(this).addClass("rouge");
-					$("img",$(this)).attr("src","rouge.png");
+					$("img",$(this)).attr("src","pictures/rouge.png");
 					position[indice].col = "2";
 				}
 					
@@ -125,25 +125,25 @@ $(document).ready(function(){
 	$(document).on("mouseover",".jaune",function() {
 		if (position[$(this).data("indice")].n == 5) return; 
 		if (!modeDeplacement)
-			$("img",$(this)).attr("src","jaune2.png");
+			$("img",$(this)).attr("src","pictures/jaune2.png");
 		else if (topo[indiceDepart].adj.indexOf($(this).data("indice")) != -1)
-			$("img",$(this)).attr("src","jaune2.png");
+			$("img",$(this)).attr("src","pictures/jaune2.png");
 	});
 	$(document).on("mouseover",".rouge",function() {
 		if (position[$(this).data("indice")].n == 5) return;
 		if (!modeDeplacement)
-			$("img",$(this)).attr("src","rouge2.png");
+			$("img",$(this)).attr("src","pictures/rouge2.png");
 		else if (topo[indiceDepart].adj.indexOf($(this).data("indice")) != -1)
-			$("img",$(this)).attr("src","rouge2.png");
+			$("img",$(this)).attr("src","pictures/rouge2.png");
 	});
 	$(document).on("mouseout",".jaune",function() {
 		// on désactive ceux que l'on veut SAUF celui qui est en cours de déplacement 
 		if ((!modeDeplacement) || (indiceDepart != $(this).data("indice")))
-			$("img",$(this)).attr("src","jaune.png");
+			$("img",$(this)).attr("src","pictures/jaune.png");
 	});
 	$(document).on("mouseout",".rouge",function() {
 		if ((!modeDeplacement) || (indiceDepart != $(this).data("indice")))
-			$("img",$(this)).attr("src","rouge.png");
+			$("img",$(this)).attr("src","pictures/rouge.png");
 	});
 
 
@@ -180,17 +180,17 @@ les coordonnées correspondent aux centres, en css, on place le côté haut-gauc
 <h1>Avalam-standalone</h1>
 
 <div id="avalam">
-	<img src="avalam_numerote.png" />
+	<img src="pictures/avalam_numerote.png" />
 </div>
 
 
 <div id="palette">
 	<div class="jaune col">
-		<img src="jaune.png" />	
+		<img src="pictures/jaune.png" />	
 		<div class="nombre"></div>	
 	</div>
 	<div class="rouge col">
-		<img src="rouge.png" />
+		<img src="pictures/rouge.png" />
 		<div class="nombre"></div>
 	</div>
 </div>
