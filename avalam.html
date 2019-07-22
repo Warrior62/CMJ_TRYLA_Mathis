@@ -33,15 +33,15 @@
 		padding: 0 1% 1% 1%;
 		background-color: lightblue;
 	}
-	#players_area input[type='text'] {float:right;border-radius:5px;text-align:center;}
+	#players_area input[type='text'] {float:right;border-radius:5px;text-align:center;margin-left:7px;max-width:100px}
 	#players_area h2, #players_area p {text-align:center;}
-	input[id='player1']+div+div {display:inline-block;margin-top:15px;margin-left:27.5px;}
+	input[id='player1']+div+div {display:inline-block;margin-top:15px;margin-left:15px;}
 	p,label {font-size:12px;}
 </style>
 
 <script src="jquery.js"></script>
 <script src="avalam.js"></script>
-<script src="players.js"></script>
+
 
 <script>
  
@@ -49,7 +49,6 @@ var position = [];
 var modeDeplacement = false;
 var indiceDepart=false; 
 var colDepart=false;  
-
 
 $(document).ready(function(){
 	var jaune = $(".jaune"); 
@@ -198,13 +197,13 @@ les coordonnées correspondent aux centres, en css, on place le côté haut-gauc
 
 <div id='players_area'>
 	<h2>Names</h2>
-	<p><i>Please enter names of both players:</i></p>
+	<p><i>Please enter names of player(s):</i></p>
 	<label for='player1'>Player°1:</label>
 	<input type='text' id='player1'/ >
 	<div id='playerAdded'></div>
 	<div>
 		<button id='buttonAdd' onclick='addPlayer()'>Add a player</button>
-		<button id='buttonConfirm'>Confirm</button>
+		<button id='buttonConfirm' onclick='confirmPlayer()''>Confirm</button>
 	</div>
 </div>
 
@@ -223,6 +222,9 @@ les coordonnées correspondent aux centres, en css, on place le côté haut-gauc
 		<div class="nombre"></div>
 	</div>
 </div>
+
+
+<script src="players.js"></script>
 
 </body>
 
