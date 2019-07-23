@@ -30,10 +30,10 @@
 		border:2px black solid;
 		border-radius:10px;
 		max-width:200px;
-		padding: 0 1% 1% 1%;
+		padding: 0 10px 10px 10px;
 		background-color: lightblue;
 	}
-	#players_area input[type='text'] {float:right;border-radius:5px;text-align:center;margin-left:7px;max-width:100px}
+	#players_area input[type='text'] {border-radius:5px;text-align:center;margin-left:30px;width:100px}
 	#players_area h2, #players_area p {text-align:center;}
 	input[id='player1']+div+div {display:inline-block;margin-top:15px;margin-left:15px;}
 	p,label {font-size:12px;}
@@ -198,12 +198,11 @@ les coordonnées correspondent aux centres, en css, on place le côté haut-gauc
 <div id='players_area'>
 	<h2>Names</h2>
 	<p><i>Please enter names of player(s):</i></p>
-	<label for='player1'>Player°1:</label>
-	<input type='text' id='player1'/ >
+	<input type='text' id='player1'/>
 	<div id='playerAdded'></div>
 	<div>
 		<button id='buttonAdd' onclick='addPlayer()'>Add a player</button>
-		<button id='buttonConfirm' onclick='confirmPlayer()''>Confirm</button>
+		<button id='buttonConfirm' onclick='confirmPlayer()'>Confirm</button>
 	</div>
 </div>
 
