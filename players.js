@@ -26,22 +26,40 @@ function confirmPlayer(){
                     +   '<tr>'
                     +       '<td style=\'width:50%\'>'
                     +           '<div id=\'td_player1\'></div>'
-                    +           '<select>'
-                    +               '<option>Choose your color</option>'
+                    +           '<select id=\'colorChoice\'>'
                     +               '<option>Red</option>'
                     +               '<option>Yellow</option>'
                     +           '</select>'
                     +       '</td>'
-                    +       '<td>Computer</td>'
+                    +       '<td id=\'computer\'>Computer</td>'
                     +   '</tr>'
                     +   '<tr>'
                     +       '<td>24</td>'
                     +       '<td>24</td>'
                     +   '</tr>'
                     +'</table>'
-                    +'<button style=\'width:10%;margin-left:45%\' onclick=\'hideButton(this);startGame()\'>Start</button>';
+                    +'<button style=\'width:10%;margin-left:45%\' onclick=\'hideButton(this);optionChosen();startGame()\'>Start</button>';
     document.getElementById('td_player1').innerHTML=player1.value;
     player1.value='';
+}
+
+function optionChosen(){
+    var colorChoice = document.getElementById('colorChoice');
+    var index = colorChoice.selectedIndex;
+    var choice = colorChoice[index].value;
+    
+    colorChoice.style.display='none';
+    switch(choice)
+    {
+        case 'Red':     
+                document.getElementById('td_player1').style.backgroundColor='red';
+                document.getElementById('computer').style.backgroundColor='yellow';
+                break;
+        case 'Yellow':  
+                document.getElementById('td_player1').style.backgroundColor='yellow';
+                document.getElementById('computer').style.backgroundColor='red';
+                break;
+    }
 }
 
 function hideButton(button){
