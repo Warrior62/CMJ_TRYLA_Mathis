@@ -26,7 +26,7 @@
 
 	#players_area{
 		position:fixed;
-		top:250px;
+		top:100px;
 		border:2px black solid;
 		border-radius:10px;
 		max-width:200px;
@@ -36,6 +36,7 @@
 
 	#players_area input[type='text'] {border-radius:5px;text-align:center;margin-left:30px;width:100px}
 	#players_area h2, #players_area p {text-align:center;}
+	#yourTurn {position:absolute;display:none;width:10%;margin-left:2%;top:300px}
 	input[id='player1']+div+div {display:inline-block;margin-top:15px;margin-left:15px;}
 	p,label {font-size:12px}
 	table,td {border: 2px solid black;text-align:center}
@@ -208,6 +209,11 @@ les coordonnées correspondent aux centres, en css, on place le côté haut-gauc
 		<button id='buttonConfirm' onclick='confirmPlayer()'>Confirm</button>
 	</div>
 </div>
+
+
+<img src='pictures/aToiDeJouer.png' id='yourTurn'>
+<img src='pictures/computerTurn.png' id='computerTurn' style='position:absolute;display:none;width:10%;right:2%;top:300px;'>
+
 
 <div id="avalam">
 	<img src="pictures/avalam_numerote.png" />
