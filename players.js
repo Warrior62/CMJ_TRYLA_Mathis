@@ -1,5 +1,6 @@
 //DECLARED VARIABLES//
 var playerAdded = document.getElementById('playerAdded');
+var player1 = document.getElementById('player1');
 var result = document.getElementById('result');
 
 //#playerAdded EMPTY//
@@ -13,6 +14,7 @@ function addPlayer(){
 
 function confirmPlayer(){
     playerAdded.innerHTML='';
+    
     result.innerHTML='<table>'
                     +   '<thead>'
                     +       '<tr>'
@@ -20,12 +22,19 @@ function confirmPlayer(){
                     +       '</tr>'
                     +   '</thead>'
                     +   '<tr>'
-                    +       '<td id=\'player1\'></td>'
+                    +       '<td style=\'width:50%\'><div id=\'td_player1\'></div></td>'
                     +       '<td>Computer</td>'
                     +   '</tr>'
                     +   '<tr>'
                     +       '<td>24</td>'
                     +       '<td>24</td>'
                     +   '</tr>'
-                    +'</table>';
+                    +'</table>'
+                    +'<button style=\'width:10%;margin-left:45%\' onclick=\'startGame(this)\'>Start</button>';
+    document.getElementById('td_player1').innerHTML=player1.value;
+    player1.value='';
+}
+
+function startGame(button){
+    button.style.display='none';
 }
