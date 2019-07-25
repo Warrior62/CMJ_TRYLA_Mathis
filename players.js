@@ -1,7 +1,9 @@
 //DECLARED VARIABLES//
 var playerAdded = document.getElementById('playerAdded');
+var players_area = document.getElementById('players_area');
 var player1 = document.getElementById('player1');
 var result = document.getElementById('result');
+var yourTurn = document.getElementById('yourTurn');
 
 //#playerAdded EMPTY//
 playerAdded.innerHTML='';
@@ -14,7 +16,7 @@ function addPlayer(){
 
 function confirmPlayer(){
     playerAdded.innerHTML='';
-    
+    players_area.style.display='none';
     result.innerHTML='<table>'
                     +   '<thead>'
                     +       '<tr>'
@@ -30,11 +32,17 @@ function confirmPlayer(){
                     +       '<td>24</td>'
                     +   '</tr>'
                     +'</table>'
-                    +'<button style=\'width:10%;margin-left:45%\' onclick=\'startGame(this)\'>Start</button>';
+                    +'<button style=\'width:10%;margin-left:45%\' onclick=\'hideButton(this);startGame()\'>Start</button>';
     document.getElementById('td_player1').innerHTML=player1.value;
     player1.value='';
 }
 
-function startGame(button){
+function hideButton(button){
     button.style.display='none';
+}
+
+
+//GAME'S MOTOR//
+function startGame(){
+    yourTurn.style.display='block';
 }
