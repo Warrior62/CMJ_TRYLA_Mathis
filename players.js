@@ -52,7 +52,7 @@ function confirmPlayer(){
                     +       '<td>24</td>'
                     +   '</tr>'
                     +'</table>'
-                    +'<button style=\'width:10%;margin-left:45%\' onclick=\'hideButton(this);optionChosen();startGame();displayYourTurn()\'>Start</button>';
+                    +'<button style=\'width:10%;margin-left:45%\' onclick=\'optionChosen(this);\'>Start</button>';
     document.getElementById('td_player1').innerHTML=player1.value;
     player1.value='';
 
@@ -61,22 +61,34 @@ function confirmPlayer(){
 }
 
 //add cell's background of color chosen by the player// 
-function optionChosen(){
+function optionChosen(button){
+   
     var colorChoice = document.getElementById('colorChoice');
+    var colorChoice2 = document.getElementById('colorChoice2');
     var index = colorChoice.selectedIndex;
+    var index2 = colorChoice2.selectedIndex;
     var choice = colorChoice[index].value;
+    var choice2 = colorChoice2[index2].value;
     
-    colorChoice.style.display='none';
-    switch(choice)
-    {
-        case 'Red':     
-                document.getElementById('td_player1').style.backgroundColor='red';
-                document.getElementById('computer').style.backgroundColor='yellow';
-                break;
-        case 'Yellow':  
-                document.getElementById('td_player1').style.backgroundColor='yellow';
-                document.getElementById('computer').style.backgroundColor='red';
-                break;
+    
+    if(choice==choice2) alert('You can not choose one color for two players.');     //if two reds or two yellows are indicated, show an alert
+    else{                                                                           //else the game starts
+        switch(choice)
+        {
+            case 'Red':     
+                    document.getElementById('td_player1').style.backgroundColor='red';
+                    document.getElementById('td_player2').style.backgroundColor='yellow';
+                    break;
+            case 'Yellow':  
+                    document.getElementById('td_player1').style.backgroundColor='yellow';
+                    document.getElementById('td_player2').style.backgroundColor='red';
+                    break;
+        }
+        colorChoice.style.display='none';   //hide both selects//
+        colorChoice2.style.display='none';
+        hideButton(button);
+        displayYourTurn();
+        startGame();
     }
 }
 
