@@ -4,6 +4,7 @@ var players_area = document.getElementById('players_area');
 var player1 = document.getElementById('player1');
 var result = document.getElementById('result');
 var yourTurn = document.getElementById('yourTurn');
+var computerTurn = document.getElementById('computerTurn');
 
 //#playerAdded EMPTY//
 playerAdded.innerHTML='';
@@ -14,6 +15,7 @@ function addPlayer(){
     playerAdded.innerHTML+='<input type=\'text\'/ ><br />';
 }
 
+//display results area//
 function confirmPlayer(){
     playerAdded.innerHTML='';
     players_area.style.display='none';
@@ -38,11 +40,12 @@ function confirmPlayer(){
                     +       '<td>24</td>'
                     +   '</tr>'
                     +'</table>'
-                    +'<button style=\'width:10%;margin-left:45%\' onclick=\'hideButton(this);optionChosen();startGame()\'>Start</button>';
+                    +'<button style=\'width:10%;margin-left:45%\' onclick=\'hideButton(this);optionChosen();startGame();displayYourTurn()\'>Start</button>';
     document.getElementById('td_player1').innerHTML=player1.value;
     player1.value='';
 }
 
+//add cell's background of color chosen by the player// 
 function optionChosen(){
     var colorChoice = document.getElementById('colorChoice');
     var index = colorChoice.selectedIndex;
@@ -62,12 +65,30 @@ function optionChosen(){
     }
 }
 
+//hide Start button//
 function hideButton(button){
     button.style.display='none';
 }
 
+function displayYourTurn(){
+    yourTurn.style.display='block';
+}
 
 //GAME'S MOTOR//
 function startGame(){
-    yourTurn.style.display='block';
+    var audio = new Audio('sound.mp3'); 
+
+    if(yourTurn.style.display == 'block'){
+        audio.play();
+        yourTurn.style.display='none';
+        computerTurn.style.display='block';
+    } 
+    else{ 
+        audio.play();
+        yourTurn.style.display='block';
+        computerTurn.style.display='none';
+    } 
+
+    setTimeout("startGame()",30000);
 }
+
