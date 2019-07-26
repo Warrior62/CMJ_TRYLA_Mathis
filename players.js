@@ -57,7 +57,7 @@ function confirmPlayer(){
     player1.value='';
 
     if(player2.value!='') document.getElementById('td_player2').innerHTML=player2.value; 
-    else if(player2.value == '') document.getElementById('td_player2').innerHTML='COMPUTER';
+    else document.getElementById('td_player2').innerHTML='COMPUTER';
 }
 
 //add cell's background of color chosen by the player// 
