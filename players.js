@@ -87,7 +87,6 @@ function optionChosen(button){
         colorChoice.style.display='none';   //hide both selects//
         colorChoice2.style.display='none';
         hideButton(button);
-        displayYourTurn();
         startGame();
     }
 }
@@ -105,14 +104,14 @@ function displayYourTurn(){
 function startGame(){
     var audio = new Audio('sound.mp3'); 
 
-    if(yourTurn.style.display == 'block'){
-        audio.play();
+    if(yourTurn.style.display == 'block'){      //if the first player turn picture is displayed
+        audio.play();                           
         yourTurn.style.display='none';
         player2turn.style.display='block';
     } 
-    else{ 
+    else{                                       //if the second player turn picture is displayed
         audio.play();
-        yourTurn.style.display='block';
+        displayYourTurn();
         player2turn.style.display='none';
     } 
 
