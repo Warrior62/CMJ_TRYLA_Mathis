@@ -6,7 +6,7 @@ var player1 = document.getElementById('player1');
 
 var result = document.getElementById('result');
 var yourTurn = document.getElementById('yourTurn');
-var computerTurn = document.getElementById('computerTurn');
+var player2turn = document.getElementById('player2Turn');
 
 //#playerAdded EMPTY//
 playerAdded.innerHTML='';
@@ -108,12 +108,12 @@ function startGame(){
     if(yourTurn.style.display == 'block'){
         audio.play();
         yourTurn.style.display='none';
-        computerTurn.style.display='block';
+        player2turn.style.display='block';
     } 
     else{ 
         audio.play();
         yourTurn.style.display='block';
-        computerTurn.style.display='none';
+        player2turn.style.display='none';
     } 
 
     setTimeout("startGame()",30000);
