@@ -118,3 +118,7 @@ function startGame(){
     setTimeout("startGame()",30000);
 }
 
+
+$(document).on("click",".rouge",function() {        //if a red one is clicked
+    alert('RED');
+});
