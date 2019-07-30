@@ -48,8 +48,8 @@ function confirmPlayer(){
                     +       '</td>'
                     +   '</tr>'
                     +   '<tr>'
-                    +       '<td>24</td>'
-                    +       '<td>24</td>'
+                    +       '<td id=\'result1\'>24</td>'
+                    +       '<td id=\'result2\'>24</td>'
                     +   '</tr>'
                     +'</table>'
                     +'<button style=\'width:10%;margin-left:45%\' onclick=\'optionChosen(this);\'>Start</button>';
@@ -111,5 +111,5 @@ function startGame(){
 
 
 $(document).on("click",".rouge",function() {        //if a red one is clicked
-    alert('RED');
+    document.getElementById('result1').innerHTML-=1;
 });
