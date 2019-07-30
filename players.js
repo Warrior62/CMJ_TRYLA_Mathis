@@ -91,6 +91,14 @@ function optionChosen(button){
     }
 }
 
+function yellowClicked(){
+    document.getElementById('result2').innerHTML-=1;
+}
+
+function redClicked(){
+    document.getElementById('result1').innerHTML-=1;
+}
+
 //GAME'S MOTOR//
 function startGame(){
     var audio = new Audio('sound.mp3'); 
@@ -105,11 +113,16 @@ function startGame(){
         yourTurn.style.display='block';         //yourTurn picture is displayed
         player2turn.style.display='none';
     } 
-
+    
+    $(document).on("click",".jaune",function() {   
+        yellowClicked();
+    });
+    $(document).on("click",".rouge",function() {   
+        redClicked();
+    });
     setTimeout("startGame()",30000);
 }
 
 
-$(document).on("click",".rouge",function() {        //if a red one is clicked
-    document.getElementById('result1').innerHTML-=1;
-});
+
+
