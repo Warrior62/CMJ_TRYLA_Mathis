@@ -86,18 +86,9 @@ function optionChosen(button){
         }
         colorChoice.style.display='none';   //hide both selects//
         colorChoice2.style.display='none';
-        hideButton(button);
+        button.style.display='none';        //hide Start button
         startGame();
     }
-}
-
-//hide Start button//
-function hideButton(button){
-    button.style.display='none';
-}
-
-function displayYourTurn(){
-    yourTurn.style.display='block';
 }
 
 //GAME'S MOTOR//
@@ -111,7 +102,7 @@ function startGame(){
     } 
     else{                                       //if the second player turn picture is displayed
         audio.play();
-        displayYourTurn();
+        yourTurn.style.display='block';         //yourTurn picture is displayed
         player2turn.style.display='none';
     } 
 
