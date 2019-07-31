@@ -102,6 +102,7 @@ function redClicked(){
 //GAME'S MOTOR//
 function startGame(){
     var audio = new Audio('sound.mp3'); 
+    document.getElementById('avalam').style.display='block';    //make avalam support visible
 
     if(yourTurn.style.display == 'block'){      //if the first player turn picture is displayed
         audio.play();                           
