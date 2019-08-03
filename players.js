@@ -62,7 +62,7 @@ function confirmPlayer(){
 
 //add cell's background of color chosen by the player// 
 function optionChosen(button){
-   
+    document.getElementById('clock').style.display='block';
     var colorChoice = document.getElementById('colorChoice');
     var colorChoice2 = document.getElementById('colorChoice2');
     var index = colorChoice.selectedIndex;
