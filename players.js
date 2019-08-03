@@ -62,7 +62,7 @@ function confirmPlayer(){
 
 //add cell's background of color chosen by the player// 
 function optionChosen(button){
-    document.getElementById('clock').style.display='block';
+    
     var colorChoice = document.getElementById('colorChoice');
     var colorChoice2 = document.getElementById('colorChoice2');
     var index = colorChoice.selectedIndex;
@@ -71,8 +71,8 @@ function optionChosen(button){
     var choice2 = colorChoice2[index2].value;
     
     
-    if(choice==choice2) alert('You can not choose one color for two players.');     //if two reds or two yellows are indicated, show an alert
-    else{                                                                           //else the game starts
+    if(choice==choice2) alert('You can not choose the same color for both players.');     //if two reds or two yellows are indicated, show an alert
+    else{                                                                                 //else the game starts
         switch(choice)
         {
             case 'Red':     
@@ -103,6 +103,7 @@ function redClicked(){
 //add a 30 seconds clock to show time remaining//
 var time = 31;
 function chrono(){ 
+    document.getElementById('clock').style.display='block';
     time--;
     document.getElementById('clock').innerHTML=time;
     if(time==1) time=31;            //when time is over, clock restart for 30 seconds
