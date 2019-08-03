@@ -3,7 +3,6 @@ var addButton = document.getElementById('buttonAdd');
 var playerAdded = document.getElementById('playerAdded');
 var players_area = document.getElementById('players_area');
 var player1 = document.getElementById('player1');
-
 var result = document.getElementById('result');
 var yourTurn = document.getElementById('yourTurn');
 var player2turn = document.getElementById('player2Turn');
@@ -16,48 +15,52 @@ playerAdded.innerHTML='';
 function addPlayer(){
     playerAdded.innerHTML+='<input type=\'text\' id=\'player2\'/ ><br />';
     addButton.style.display='none';
+    return true;
 }
 
 //display results area//
 function confirmPlayer(){
     
     var player2 = document.getElementById('player2');
-        
-    playerAdded.innerHTML='';
-    players_area.style.display='none';
-    result.innerHTML='<table>'                                      //results table is created and displayed
-                    +   '<thead>'
-                    +       '<tr>'
-                    +           '<th colspan=\'2\'>Results</th>'
-                    +       '</tr>'
-                    +   '</thead>'
-                    +   '<tr>'
-                    +       '<td style=\'width:50%\'>'
-                    +           '<div id=\'td_player1\'></div>'
-                    +           '<select id=\'colorChoice\'>'
-                    +               '<option>Red</option>'
-                    +               '<option>Yellow</option>'
-                    +           '</select>'
-                    +       '</td>'
-                    +       '<td>'
-                    +           '<div id=\'td_player2\'>COMPUTER</div>'
-                    +           '<select id=\'colorChoice2\'>'
-                    +               '<option>Red</option>'
-                    +               '<option>Yellow</option>'
-                    +           '</select>'
-                    +       '</td>'
-                    +   '</tr>'
-                    +   '<tr>'
-                    +       '<td id=\'result1\'>24</td>'
-                    +       '<td id=\'result2\'>24</td>'
-                    +   '</tr>'
-                    +'</table>'
-                    +'<button style=\'width:10%;margin-left:45%\' onclick=\'optionChosen(this);\'>Start</button>';
-    document.getElementById('td_player1').innerHTML=player1.value;
-    player1.value='';
 
-    if(player2.value!='') document.getElementById('td_player2').innerHTML=player2.value; 
-    else document.getElementById('td_player2').innerHTML='COMPUTER';
+    if(player1.value=='') alert('You didn\'t indicate the player\'s name.');
+    else{
+        playerAdded.innerHTML='';
+        players_area.style.display='none';
+        result.innerHTML='<table>'                                                                   //results table is created and displayed
+                        +   '<thead>'
+                        +       '<tr>'
+                        +           '<th colspan=\'2\'>Results</th>'
+                        +       '</tr>'
+                        +   '</thead>'
+                        +   '<tr>'
+                        +       '<td style=\'width:50%\'>'
+                        +           '<div id=\'td_player1\'></div>'
+                        +           '<select id=\'colorChoice\'>'
+                        +               '<option>Red</option>'
+                        +               '<option>Yellow</option>'
+                        +           '</select>'
+                        +       '</td>'
+                        +       '<td>'
+                        +           '<div id=\'td_player2\'>COMPUTER</div>'
+                        +           '<select id=\'colorChoice2\'>'
+                        +               '<option>Red</option>'
+                        +               '<option>Yellow</option>'
+                        +           '</select>'
+                        +       '</td>'
+                        +   '</tr>'
+                        +   '<tr>'
+                        +       '<td id=\'result1\'>24</td>'
+                        +       '<td id=\'result2\'>24</td>'
+                        +   '</tr>'
+                        +'</table>'
+                        +'<button style=\'width:10%;margin-left:45%\' onclick=\'optionChosen(this);\'>Start</button>';
+        document.getElementById('td_player1').innerHTML=player1.value;
+    
+        if(player2.value!='') document.getElementById('td_player2').innerHTML=player2.value; 
+        else document.getElementById('td_player2').innerHTML='COMPUTER';                                //if only one player's name is indicated,                                                                                                                       
+    }                                                                                                   // so this one plays against the COMPUTER
+   
 }
 
 //add cell's background of color chosen by the player// 
