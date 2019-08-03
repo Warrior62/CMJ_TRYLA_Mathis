@@ -104,8 +104,8 @@ function redClicked(){
 var time = 31;
 function chrono(){ 
     time--;
-    console.log(time);
-    if(time==0) time=31;            //when time is over, clock restart for 30 seconds
+    document.getElementById('clock').innerHTML=time;
+    if(time==1) time=31;            //when time is over, clock restart for 30 seconds
     setTimeout("chrono()",1000);    //time decreases of 1 each second   
 }
 
