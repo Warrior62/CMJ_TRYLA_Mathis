@@ -25,7 +25,7 @@ function confirmPlayer(){
         
     playerAdded.innerHTML='';
     players_area.style.display='none';
-    result.innerHTML='<table>'
+    result.innerHTML='<table>'                                      //results table is created and displayed
                     +   '<thead>'
                     +       '<tr>'
                     +           '<th colspan=\'2\'>Results</th>'
@@ -105,8 +105,8 @@ var time = 31;
 function chrono(){ 
     time--;
     console.log(time);
-    if(time==0) time=31;
-    setTimeout("chrono()",1000);
+    if(time==0) time=31;            //when time is over, clock restart for 30 seconds
+    setTimeout("chrono()",1000);    //time decreases of 1 each second   
 }
 
 
