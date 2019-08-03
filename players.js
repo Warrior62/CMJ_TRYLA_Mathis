@@ -88,6 +88,7 @@ function optionChosen(button){
         colorChoice2.style.display='none';
         button.style.display='none';        //hide Start button
         startGame();
+        chrono();
     }
 }
 
@@ -98,6 +99,16 @@ function yellowClicked(){
 function redClicked(){
     document.getElementById('result1').innerHTML-=1;
 }
+
+//add a 30 seconds clock to show time remaining//
+var time = 31;
+function chrono(){ 
+    time--;
+    console.log(time);
+    if(time==0) time=31;
+    setTimeout("chrono()",1000);
+}
+
 
 //GAME'S MOTOR//
 function startGame(){
