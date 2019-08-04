@@ -71,8 +71,8 @@ function confirmPlayer(){
     
     var player2 = document.getElementById('player2');
 
+    
     if(player1.value=='') alert('You didn\'t indicate the player\'s name.');                            //if the first name isn't indicated
-    else if(player1.value==player2.value) alert('You have to choose two different names.');             //if both names are similar
     else if(player1.value!='' || player1.value!=player2.value){                                         //if CORRECT
         playerAdded.innerHTML='';
         hide(players_area);
