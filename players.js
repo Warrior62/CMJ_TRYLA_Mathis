@@ -28,7 +28,7 @@ function colourBkg(id,color){
 
 //display results table
 function displayResults(){
-    result.innerHTML='<table>'                                                                   //results table is created and displayed
+    result.innerHTML='<table>'                                                        //results table is created and displayed
                         +   '<thead>'
                         +       '<tr>'
                         +           '<th colspan=\'2\'>Results</th>'
@@ -101,7 +101,7 @@ function optionChosen(button){
     
     
     if(choice==choice2) alert('You can\'t choose the same color for both players.');     //if two reds or two yellows are indicated, show an alert
-    else{                                                                                 //else the game starts
+    else{                                                                                //else the game starts
         switch(choice)
         {
             case 'Red':     
@@ -113,11 +113,11 @@ function optionChosen(button){
                     colourBkg('td_player2','red');
                     break;
         }
-        hide(colorChoice);   //hide both selects//
-        hide(colorChoice2);
+        hide(colorChoice);   //hide player1's select
+        hide(colorChoice2);  //hide player2's select
         hide(button);        //hide Start button
-        startGame();
-        chrono();       
+        startGame();         //Game Motor starts
+        chrono();            //a 30seconds chrono starts
     }
 }
 
