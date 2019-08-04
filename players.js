@@ -16,10 +16,14 @@ function hide(element){
     element.style.display='none';
 }
 
-
 //show an element
 function show(element){
     element.style.display='block';
+}
+
+//colour a background
+function colourBkg(id,color){
+    document.getElementById(id).style.backgroundColor=color;
 }
 
 //display results table
@@ -101,12 +105,12 @@ function optionChosen(button){
         switch(choice)
         {
             case 'Red':     
-                    document.getElementById('td_player1').style.backgroundColor='red';
-                    document.getElementById('td_player2').style.backgroundColor='yellow';
+                    colourBkg('td_player1','red');
+                    colourBkg('td_player2','yellow');
                     break;
             case 'Yellow':  
-                    document.getElementById('td_player1').style.backgroundColor='yellow';
-                    document.getElementById('td_player2').style.backgroundColor='red';
+                    colourBkg('td_player1','yellow');
+                    colourBkg('td_player2','red');
                     break;
         }
         hide(colorChoice);   //hide both selects//
