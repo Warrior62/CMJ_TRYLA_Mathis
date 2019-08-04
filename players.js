@@ -22,14 +22,7 @@ function show(element){
     element.style.display='block';
 }
 
-
-//add a player in #playerAdded//
-function addPlayer(){
-    playerAdded.innerHTML+='<input type=\'text\' id=\'player2\'/ ><br />';
-    hide(addButton);
-    return true;
-}
-
+//display results table
 function displayResults(){
     result.innerHTML='<table>'                                                                   //results table is created and displayed
                         +   '<thead>'
@@ -61,13 +54,23 @@ function displayResults(){
                         +'<button style=\'width:10%;margin-left:45%\' onclick=\'optionChosen(this);\'>Start</button>';
 }
 
+
+//add a player in #playerAdded//
+function addPlayer(){
+    playerAdded.innerHTML+='<input type=\'text\' id=\'player2\'/ ><br />';
+    hide(addButton);
+    return true;
+}
+
+
 //display results area//
 function confirmPlayer(){
     
     var player2 = document.getElementById('player2');
 
     if(player1.value=='') alert('You didn\'t indicate the player\'s name.');
-    else{
+    else if(player1.value==player2.value) alert('You have to choose two differents names.');
+    else if(player1.value!='' || player1.value!=player2.value){
         playerAdded.innerHTML='';
         hide(players_area);
         displayResults();
@@ -107,7 +110,7 @@ function optionChosen(button){
         hide(colorChoice2);
         hide(button);        //hide Start button
         startGame();
-        chrono();
+        chrono();       
     }
 }
 
@@ -115,7 +118,7 @@ function optionChosen(button){
 //add a 30 seconds clock to show time remaining//
 var time = 31;
 function chrono(){ 
-    document.getElementById('clock').style.display='block';
+    show(document.getElementById('clock'));
     time--;
     document.getElementById('clock').innerHTML=time;
     if(time==1) time=31;            //when time is over, clock restart for 30 seconds
@@ -126,7 +129,7 @@ function chrono(){
 //GAME'S MOTOR//
 function startGame(){
     var audio = new Audio('sound.mp3'); 
-    document.getElementById('avalam').style.display='block';    //make avalam support visible
+    show(document.getElementById('avalam'));    //make avalam support visible
 
     if(yourTurn.style.display == 'block'){                      //if the first player turn picture is displayed
         audio.play();                           
