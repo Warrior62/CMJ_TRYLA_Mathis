@@ -132,15 +132,14 @@ function chrono(){
 //GAME'S MOTOR//
 function startGame(){
     var audio = new Audio('sound.mp3'); 
-    show(document.getElementById('avalam'));    //make avalam support visible
+    show(document.getElementById('avalam'));                    //make avalam support visible
+    audio.play();                   
 
-    if(yourTurn.style.display == 'block'){                      //if the first player turn picture is displayed
-        audio.play();                           
+    if(yourTurn.style.display == 'block'){                      //if the first player turn picture is displayed                         
         hide(yourTurn);
         show(player2turn);
     } 
     else{                                                       //if the second player turn picture is displayed
-        audio.play();
         show(yourTurn);                                         //yourTurn picture is displayed
         hide(player2turn);
     } 
