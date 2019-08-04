@@ -57,9 +57,12 @@ function displayResults(){
 
 //add a player in #playerAdded//
 function addPlayer(){
-    playerAdded.innerHTML+='<input type=\'text\' id=\'player2\'/ ><br />';
-    hide(addButton);
-    return true;
+    
+    if(player1.value=='') alert('You didn\'t indicate the player\'s name.');
+    else{
+        playerAdded.innerHTML+='<input type=\'text\' id=\'player2\'/ ><br />';
+        hide(addButton);
+    }
 }
 
 
