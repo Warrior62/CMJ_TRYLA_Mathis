@@ -16,6 +16,13 @@ function hide(element){
     element.style.display='none';
 }
 
+
+//show an element
+function show(element){
+    element.style.display='block';
+}
+
+
 //add a player in #playerAdded//
 function addPlayer(){
     playerAdded.innerHTML+='<input type=\'text\' id=\'player2\'/ ><br />';
@@ -104,13 +111,6 @@ function optionChosen(button){
     }
 }
 
-function yellowClicked(){
-    document.getElementById('result2').innerHTML-=1;
-}
-
-function redClicked(){
-    document.getElementById('result1').innerHTML-=1;
-}
 
 //add a 30 seconds clock to show time remaining//
 var time = 31;
@@ -128,23 +128,16 @@ function startGame(){
     var audio = new Audio('sound.mp3'); 
     document.getElementById('avalam').style.display='block';    //make avalam support visible
 
-    if(yourTurn.style.display == 'block'){      //if the first player turn picture is displayed
+    if(yourTurn.style.display == 'block'){                      //if the first player turn picture is displayed
         audio.play();                           
         hide(yourTurn);
-        player2turn.style.display='block';
+        show(player2turn);
     } 
-    else{                                       //if the second player turn picture is displayed
+    else{                                                       //if the second player turn picture is displayed
         audio.play();
-        yourTurn.style.display='block';         //yourTurn picture is displayed
+        show(yourTurn);                                         //yourTurn picture is displayed
         hide(player2turn);
     } 
-    
-    $(document).on("click",".jaune",function() {   
-        yellowClicked();
-    });
-    $(document).on("click",".rouge",function() {   
-        redClicked();
-    });
     setTimeout("startGame()",30000);
 }
 
