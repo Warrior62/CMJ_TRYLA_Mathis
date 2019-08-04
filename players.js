@@ -72,7 +72,7 @@ function confirmPlayer(){
     var player2 = document.getElementById('player2');
 
     if(player1.value=='') alert('You didn\'t indicate the player\'s name.');                            //if the first name isn't indicated
-    else if(player1.value==player2.value) alert('You have to choose two differents names.');            //if both names are similar
+    else if(player1.value==player2.value) alert('You have to choose two different names.');             //if both names are similar
     else if(player1.value!='' || player1.value!=player2.value){                                         //if CORRECT
         playerAdded.innerHTML='';
         hide(players_area);
@@ -96,7 +96,7 @@ function optionChosen(button){
     var choice2 = colorChoice2[index2].value;
     
     
-    if(choice==choice2) alert('You can not choose the same color for both players.');     //if two reds or two yellows are indicated, show an alert
+    if(choice==choice2) alert('You can\'t choose the same color for both players.');     //if two reds or two yellows are indicated, show an alert
     else{                                                                                 //else the game starts
         switch(choice)
         {
