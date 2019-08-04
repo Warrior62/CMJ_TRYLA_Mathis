@@ -11,10 +11,15 @@ var player2turn = document.getElementById('player2Turn');
 playerAdded.innerHTML='';
 
 
+//hide an element
+function hide(element){
+    element.style.display='none';
+}
+
 //add a player in #playerAdded//
 function addPlayer(){
     playerAdded.innerHTML+='<input type=\'text\' id=\'player2\'/ ><br />';
-    addButton.style.display='none';
+    hide(addButton);
     return true;
 }
 
@@ -57,7 +62,7 @@ function confirmPlayer(){
     if(player1.value=='') alert('You didn\'t indicate the player\'s name.');
     else{
         playerAdded.innerHTML='';
-        players_area.style.display='none';
+        hide(players_area);
         displayResults();
         document.getElementById('td_player1').innerHTML=player1.value;
     
@@ -91,9 +96,9 @@ function optionChosen(button){
                     document.getElementById('td_player2').style.backgroundColor='red';
                     break;
         }
-        colorChoice.style.display='none';   //hide both selects//
-        colorChoice2.style.display='none';
-        button.style.display='none';        //hide Start button
+        hide(colorChoice);   //hide both selects//
+        hide(colorChoice2);
+        hide(button);        //hide Start button
         startGame();
         chrono();
     }
@@ -125,13 +130,13 @@ function startGame(){
 
     if(yourTurn.style.display == 'block'){      //if the first player turn picture is displayed
         audio.play();                           
-        yourTurn.style.display='none';
+        hide(yourTurn);
         player2turn.style.display='block';
     } 
     else{                                       //if the second player turn picture is displayed
         audio.play();
         yourTurn.style.display='block';         //yourTurn picture is displayed
-        player2turn.style.display='none';
+        hide(player2turn);
     } 
     
     $(document).on("click",".jaune",function() {   
