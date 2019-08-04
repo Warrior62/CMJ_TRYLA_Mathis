@@ -18,16 +18,8 @@ function addPlayer(){
     return true;
 }
 
-//display results area//
-function confirmPlayer(){
-    
-    var player2 = document.getElementById('player2');
-
-    if(player1.value=='') alert('You didn\'t indicate the player\'s name.');
-    else{
-        playerAdded.innerHTML='';
-        players_area.style.display='none';
-        result.innerHTML='<table>'                                                                   //results table is created and displayed
+function displayResults(){
+    result.innerHTML='<table>'                                                                   //results table is created and displayed
                         +   '<thead>'
                         +       '<tr>'
                         +           '<th colspan=\'2\'>Results</th>'
@@ -55,6 +47,18 @@ function confirmPlayer(){
                         +   '</tr>'
                         +'</table>'
                         +'<button style=\'width:10%;margin-left:45%\' onclick=\'optionChosen(this);\'>Start</button>';
+}
+
+//display results area//
+function confirmPlayer(){
+    
+    var player2 = document.getElementById('player2');
+
+    if(player1.value=='') alert('You didn\'t indicate the player\'s name.');
+    else{
+        playerAdded.innerHTML='';
+        players_area.style.display='none';
+        displayResults();
         document.getElementById('td_player1').innerHTML=player1.value;
     
         if(player2.value!='') document.getElementById('td_player2').innerHTML=player2.value; 
