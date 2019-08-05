@@ -79,6 +79,45 @@ function confirmPlayer(){
    
 }
 
+//GAME'S MOTOR//
+function startGame(cpt_color){
+    var audio = new Audio('sound.mp3'); 
+    var cpt_color=detectCptColor();
+    show(document.getElementById('avalam'));                            //make avalam support visible
+    audio.play();  
+    
+    if(yourTurn.style.display == 'none'){                               //if the first player turn picture is hidden                         
+        hide(player2turn);
+        show(yourTurn);
+        onmouse('over','jaune');
+        onmouse('over','rouge');
+        onmouse('out','jaune');
+        onmouse('out','rouge');
+    } 
+    else{                                                               //if the first player turn picture is displayed
+        show(player2turn);                                              //yourTurn picture is hidden
+        hide(yourTurn);
+        
+        if( !(isComputer()) ){                                          //if player2 is not COMPUTER
+            onmouse('over',cpt_color);                                           
+            onmouse('out',cpt_color); 
+        }
+    } 
+    setTimeout("startGame()",30000);
+}
+
+
+//add a 30 seconds clock to show time remaining//
+var time = 31;
+function chrono(){ 
+    show(document.getElementById('clock'));
+    time--;
+    document.getElementById('clock').innerHTML=time;
+    if(time==1) time=31;            //when time is over, clock restart for 30 seconds
+    setTimeout("chrono()",1000);    //time decreases of 1 each second   
+}
+
+
 //add cell's background of color chosen by the player// 
 function optionChosen(button){
     
@@ -113,39 +152,8 @@ function optionChosen(button){
 }
 
 
-//add a 30 seconds clock to show time remaining//
-var time = 31;
-function chrono(){ 
-    show(document.getElementById('clock'));
-    time--;
-    document.getElementById('clock').innerHTML=time;
-    if(time==1) time=31;            //when time is over, clock restart for 30 seconds
-    setTimeout("chrono()",1000);    //time decreases of 1 each second   
-}
 
 
-//GAME'S MOTOR//
-function startGame(cpt_color){
-    var audio = new Audio('sound.mp3'); 
-    show(document.getElementById('avalam'));                   //make avalam support visible
-    audio.play();                   
 
-    if(yourTurn.style.display == 'none'){                      //if the first player turn picture is hidden                         
-        hide(player2turn);
-        show(yourTurn);
-    } 
-    else{                                                      //if the first player turn picture is displayed
-        show(player2turn);                                     //yourTurn picture is displayed
-        hide(yourTurn);
-        if( isComputer() ){                                    //if it is computer's turn
-            alert('COMPUTER');
-        }
-    } 
-    setTimeout("startGame()",30000);
-}
-
-/*if( isComputer() ) {
-            alert('COMPUTER');
-        }*/
 
 
