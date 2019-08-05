@@ -6,6 +6,9 @@ Date de fin:
 Date de livraison: 19 Août 2019
 Date de soutenance: 20 Août 2019
 
+//TOOLS.JS
+Le fichier tools.js est le fichier js contenant les fonctions outils, inclues dans le fichier players.js, utilisées pour faire tourner le moteur de jeu.
+
 //PLAYERS.JS
 Le fichier players.js est le fichier js contenant les fonctions qui affichent le nom des joueurs, le resultat en cours.
 Ce fichier js correspond aussi à mon moteur de jeu écrit entièrement en js.
