@@ -30,3 +30,22 @@ function detectCptColor(){
     } 
     else return false;
 }
+
+//onmouseover and onmouseout jquery functions
+function onmouse(type,color){
+    if(type=='over'){
+        $(document).on("mouseover","."+color,function() {
+            if (position[$(this).data("indice")].n == 5) return; 
+            if (!modeDeplacement)
+                $("img",$(this)).attr("src","pictures/"+color+"2.png");
+            else if (topo[indiceDepart].adj.indexOf($(this).data("indice")) != -1)
+                $("img",$(this)).attr("src","pictures/"+color+"2.png");
+        });
+    }
+    else if(type=='out'){
+        $(document).on("mouseout","."+color,function() {
+            if ((!modeDeplacement) || (indiceDepart != $(this).data("indice")))
+                $("img",$(this)).attr("src","pictures/"+color+".png");
+        });
+    }
+}
