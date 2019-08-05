@@ -17,6 +17,7 @@ Ce fichier js correspond aussi à mon moteur de jeu écrit entièrement en js.
 Le fichier avalam.html contient le plateau de jeu interactif Avalam, une div permettant de rentrer les noms des joueurs, et une autre div affichant le résultat de la partie en cours.
 
 
+
 /////////////////// HOW TO START PLAYING ///////////////////
 
 1. Rentrez le nom du joueur dans la div Names à gauche de l'
