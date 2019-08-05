@@ -20,3 +20,13 @@ function isComputer(){
     if(bkg2.innerHTML=='COMPUTER') return true;
     else return false;
 }
+
+//detect computer's pawn's color
+function detectCptColor(){
+    var bkg2 = document.getElementById('td_player2');
+    if(isComputer()){
+        if(bkg2.style.backgroundColor=='red') return 'red';
+        else return 'yellow';
+    } 
+    else return false;
+}
