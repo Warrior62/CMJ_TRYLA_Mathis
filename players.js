@@ -1,3 +1,8 @@
+function include(fileName){
+      document.write("<script type='text/javascript' src='"+fileName+"'></script>" );
+}
+include('tools.js');
+
 //DECLARED VARIABLES//
 var addButton = document.getElementById('buttonAdd');
 var playerAdded = document.getElementById('playerAdded');
@@ -10,28 +15,6 @@ var player2turn = document.getElementById('player2Turn');
 //#playerAdded EMPTY//
 playerAdded.innerHTML='';
 
-
-//hide an element
-function hide(element){
-    element.style.display='none';
-}
-
-//show an element
-function show(element){
-    element.style.display='block';
-}
-
-//colour a background
-function colourBkg(id,color){
-    document.getElementById(id).style.backgroundColor=color;
-}
-
-//know if Game Motor has to be active
-function isComputer(){
-    var bkg2 = document.getElementById('td_player2');
-    if(bkg2.innerHTML=='COMPUTER') return true;
-    else return false;
-}
 
 //display results table
 function displayResults(){
