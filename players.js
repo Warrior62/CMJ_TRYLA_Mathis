@@ -26,6 +26,13 @@ function colourBkg(id,color){
     document.getElementById(id).style.backgroundColor=color;
 }
 
+//know if Game Motor has to be active
+function isComputer(){
+    var bkg2 = document.getElementById('td_player2');
+    if(bkg2.innerHTML=='COMPUTER') return true;
+    else return false;
+}
+
 //display results table
 function displayResults(){
     result.innerHTML='<table>'                                                        //results table is created and displayed
@@ -113,6 +120,7 @@ function optionChosen(button){
                     colourBkg('td_player2','red');
                     break;
         }
+        isComputer();
         hide(colorChoice);   //hide player1's select
         hide(colorChoice2);  //hide player2's select
         hide(button);        //hide Start button
