@@ -127,20 +127,25 @@ function chrono(){
 //GAME'S MOTOR//
 function startGame(cpt_color){
     var audio = new Audio('sound.mp3'); 
-    show(document.getElementById('avalam'));                    //make avalam support visible
+    show(document.getElementById('avalam'));                   //make avalam support visible
     audio.play();                   
 
-    if(yourTurn.style.display == 'block'){                      //if the first player turn picture is displayed                         
-        hide(yourTurn);
-        show(player2turn);
-    } 
-    else{                                                       //if the second player turn picture is displayed
-        show(yourTurn);                                         //yourTurn picture is displayed
+    if(yourTurn.style.display == 'none'){                      //if the first player turn picture is hidden                         
         hide(player2turn);
+        show(yourTurn);
+    } 
+    else{                                                      //if the first player turn picture is displayed
+        show(player2turn);                                     //yourTurn picture is displayed
+        hide(yourTurn);
+        if( isComputer() ){                                    //if it is computer's turn
+            alert('COMPUTER');
+        }
     } 
     setTimeout("startGame()",30000);
 }
 
-
+/*if( isComputer() ) {
+            alert('COMPUTER');
+        }*/
 
 
