@@ -103,12 +103,12 @@ function optionChosen(button){
                     colourBkg('td_player2','red');
                     break;
         }
-        isComputer();
-        hide(colorChoice);   //hide player1's select
-        hide(colorChoice2);  //hide player2's select
-        hide(button);        //hide Start button
-        startGame();         //Game Motor starts
-        chrono();            //a 30seconds chrono starts
+        var cptColor = detectCptColor();
+        hide(colorChoice);                  //hide player1's select
+        hide(colorChoice2);                 //hide player2's select
+        hide(button);                       //hide Start button
+        startGame(cptColor);                //Game Motor starts
+        chrono();                           //a 30seconds chrono starts
     }
 }
 
@@ -125,7 +125,7 @@ function chrono(){
 
 
 //GAME'S MOTOR//
-function startGame(){
+function startGame(cpt_color){
     var audio = new Audio('sound.mp3'); 
     show(document.getElementById('avalam'));                    //make avalam support visible
     audio.play();                   
