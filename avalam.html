@@ -107,31 +107,6 @@ $(document).ready(function(){
 	});
 
 
-	$(document).on("mouseover",".jaune",function() {
-		if (position[$(this).data("indice")].n == 5) return; 
-		if (!modeDeplacement)
-			$("img",$(this)).attr("src","pictures/jaune2.png");
-		else if (topo[indiceDepart].adj.indexOf($(this).data("indice")) != -1)
-			$("img",$(this)).attr("src","pictures/jaune2.png");
-	});
-	$(document).on("mouseover",".rouge",function() {
-		if (position[$(this).data("indice")].n == 5) return;
-		if (!modeDeplacement)
-			$("img",$(this)).attr("src","pictures/rouge2.png");
-		else if (topo[indiceDepart].adj.indexOf($(this).data("indice")) != -1)
-			$("img",$(this)).attr("src","pictures/rouge2.png");
-	});
-	$(document).on("mouseout",".jaune",function() {
-		// on désactive ceux que l'on veut SAUF celui qui est en cours de déplacement 
-		if ((!modeDeplacement) || (indiceDepart != $(this).data("indice")))
-			$("img",$(this)).attr("src","pictures/jaune.png");
-	});
-	$(document).on("mouseout",".rouge",function() {
-		if ((!modeDeplacement) || (indiceDepart != $(this).data("indice")))
-			$("img",$(this)).attr("src","pictures/rouge.png");
-	});
-
-
 	for(i=0;i<topo.length;i++) {
 		if (topo[i].col == "2") 
 			n = rouge.clone(true);  
