@@ -80,28 +80,24 @@ function confirmPlayer(){
 }
 
 //GAME'S MOTOR//
-function startGame(cpt_color){
+function startGame(){
     var audio = new Audio('sound.mp3'); 
     var cpt_color=detectCptColor();
     show(document.getElementById('avalam'));                            //make avalam support visible
-    audio.play();  
+    audio.play(); 
+    
+    onmouse('over','jaune');
+    onmouse('over','rouge');
+    onmouse('out','jaune');
+    onmouse('out','rouge');
     
     if(yourTurn.style.display == 'none'){                               //if the first player turn picture is hidden                         
         hide(player2turn);
         show(yourTurn);
-        onmouse('over','jaune');
-        onmouse('over','rouge');
-        onmouse('out','jaune');
-        onmouse('out','rouge');
     } 
     else{                                                               //if the first player turn picture is displayed
         show(player2turn);                                              //yourTurn picture is hidden
         hide(yourTurn);
-        
-        if( !(isComputer()) ){                                          //if player2 is not COMPUTER
-            onmouse('over',cpt_color);                                           
-            onmouse('out',cpt_color); 
-        }
     } 
     setTimeout("startGame()",30000);
 }
@@ -142,11 +138,10 @@ function optionChosen(button){
                     colourBkg('td_player2','red');
                     break;
         }
-        var cptColor = detectCptColor();
         hide(colorChoice);                  //hide player1's select
         hide(colorChoice2);                 //hide player2's select
         hide(button);                       //hide Start button
-        startGame(cptColor);                //Game Motor starts
+        startGame();                        //Game Motor starts
         chrono();                           //a 30seconds chrono starts
     }
 }
