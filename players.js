@@ -97,7 +97,7 @@ function startGame(){
     } 
     else{                                                               //if the first player turn picture is displayed
         show(player2turn);                                              //yourTurn picture is hidden
-        hide(yourTurn);
+        hide(yourTurn); 
     } 
     setTimeout("startGame()",30000);
 }
