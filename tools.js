@@ -24,11 +24,8 @@ function isComputer(){
 //detect computer's pawn's color
 function detectCptColor(){
     var bkg2 = document.getElementById('td_player2');
-    if(isComputer()){
-        if(bkg2.style.backgroundColor=='red') return 'rouge';
-        else return 'jaune';
-    } 
-    else return false;
+    if(bkg2.style.backgroundColor=='red') return 'rouge';
+    else return 'jaune';
 }
 
 //onmouseover and onmouseout jquery functions
