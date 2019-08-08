@@ -10,6 +10,7 @@
 
 <script src="jquery.js"></script>
 <script src="avalam.js"></script>
+<script src="tools.js"></script>
 
 
 <script>
@@ -23,13 +24,20 @@ $(document).ready(function(){
 	var jaune = $(".jaune"); 
 	var rouge = $(".rouge"); 
 	var n; 
+	var yellow_total=0;
+	var red_total=0;
 
 	$(".col").click(function(){
 		var indice = $(this).data("indice");
 		console.log("couleur:" + position[indice].col + " nombre:" + position[indice].n);
 
 
-		if(position[indice].n == 5) alert('The tower is full !');
+		if(position[indice].n == 5){							//if the tower has 5 pawns
+			alert('The tower is full !');
+			var sumCol = detectSummit(position[indice].col);
+			if(sumCol == 'yellow') yellow_total++;
+			else red_total++;
+		}	
 
 		if (!modeDeplacement) { // debut deplacement 
 			console.log("debut deplacement");
