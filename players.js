@@ -12,6 +12,9 @@ var result = document.getElementById('result');
 var yourTurn = document.getElementById('yourTurn');
 var player2turn = document.getElementById('player2Turn');
 var errors = document.getElementById('errors');
+var finishButton = document.getElementById('finishBtn');
+var radY = document.getElementById('radY');
+var radN = document.getElementById('radN');
 
 //#playerAdded EMPTY//
 playerAdded.innerHTML='';
@@ -50,7 +53,7 @@ function displayResults(){
                         +       '<td id=\'nbTower2\'>0</td>'
                         +   '</tr>'
                         +'</table>'
-                        +'<button style=\'width:10%;margin-left:45%\' onclick=\'optionChosen(this);\'>Start</button>';
+                        +'<button style=\'position:absolute;width:10%;left:45%;top:45%\' onclick=\'optionChosen(this);\'>Start</button>';
 }
 
 
@@ -70,10 +73,10 @@ function confirmPlayer(){
     
     var player2 = document.getElementById('player2');
 
-    
     if(player1.value=='') alert('You didn\'t indicate the player\'s name.');                            //if the first name isn't indicated
     else if(player1.value!='' || player1.value!=player2.value){                                         //if CORRECT
         playerAdded.innerHTML='';
+        show(document.getElementById('form'));
         hide(players_area);
         displayResults();
         document.getElementById('td_player1').innerHTML=player1.value;
@@ -83,6 +86,20 @@ function confirmPlayer(){
     }                                                                                                   // so this one plays against the COMPUTER
    
 }
+
+
+//show which player has to play
+function changePlTurn(){
+    if(yourTurn.style.display == 'none'){                                                        
+        hide(player2turn);
+        show(yourTurn);
+    } 
+    else{                                                               
+        show(player2turn);                                              
+        hide(yourTurn); 
+    }
+}
+
 
 //GAME'S MOTOR//
 function startGame(){
@@ -96,14 +113,7 @@ function startGame(){
     onmouse('out','jaune');
     onmouse('out','rouge');
     
-    if(yourTurn.style.display == 'none'){                               //if the first player turn picture is hidden                         
-        hide(player2turn);
-        show(yourTurn);
-    } 
-    else{                                                               //if the first player turn picture is displayed
-        show(player2turn);                                              //yourTurn picture is hidden
-        hide(yourTurn); 
-    } 
+    changePlTurn();
     errors.innerHTML='';
     setTimeout("startGame()",30000);
 }
@@ -130,9 +140,9 @@ function optionChosen(button){
     var choice = colorChoice[index].value;
     var choice2 = colorChoice2[index2].value;
     
-    
-    if(choice==choice2) alert('You can\'t choose the same color for both players.');     //if two reds or two yellows are indicated, show an alert
-    else{                                                                                //else the game starts
+    if(choice==choice2) alert('You can\'t choose the same color for both players.');                   //if two reds or two yellows are indicated, show an alert
+    else if( !(radN.checked) && !(radY.checked)) alert('You have to define your kind of game.');       
+    else if(choice!=choice2 && (radN.checked || radY.checked)){                                        //else the game starts
         switch(choice)
         {
             case 'Red':     
@@ -144,11 +154,26 @@ function optionChosen(button){
                     colourBkg('td_player2','red');
                     break;
         }
+        hide(document.getElementById('form'));
         hide(colorChoice);                  //hide player1's select
         hide(colorChoice2);                 //hide player2's select
         hide(button);                       //hide Start button
-        startGame();                        //Game Motor starts
-        chrono();                           //a 30seconds chrono starts
+        
+        
+        if(radY.checked){
+            startGame();                    //Game Motor starts
+            chrono();                       //a 30seconds chrono starts
+        } 
+        else if(radN.checked){
+            show(finishButton);
+            show(document.getElementById('avalam'));
+            onmouse('over','jaune');
+            onmouse('over','rouge');
+            onmouse('out','jaune');
+            onmouse('out','rouge');
+            changePlTurn();
+        }                                 
+                                   
     }
 }
 
