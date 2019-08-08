@@ -28,16 +28,12 @@ $(document).ready(function(){
 	var red_total=0;
 
 	$(".col").click(function(){
+		document.getElementById('errors').innerHTML='';
 		var indice = $(this).data("indice");
+		var pl2color = detectCptColor();
 		console.log("couleur:" + position[indice].col + " nombre:" + position[indice].n);
 
-
-		if(position[indice].n == 5){							//if the tower has 5 pawns
-			alert('The tower is full !');
-			var sumCol = detectSummit(position[indice].col);
-			if(sumCol == 'yellow') yellow_total++;
-			else red_total++;
-		}	
+		if(position[indice].n == 5) document.getElementById('errors').innerHTML='The tower is full !';
 
 		if (!modeDeplacement) { // debut deplacement 
 			console.log("debut deplacement");
@@ -57,12 +53,25 @@ $(document).ready(function(){
 				return; 
 			}
 			else { // validation
-				console.log("fin de deplacement de " + indiceDepart + " vers " + indice);
-				// depart: combien, col ? 
-				console.log("depart: n=" + position[indiceDepart].n + "col=" + position[indiceDepart].col);
-				// arrivee : combien, col ? 
+				console.log("fin de deplacement de " + indiceDepart + " vers " + indice); 
+				console.log("depart: n=" + position[indiceDepart].n + "col=" + position[indiceDepart].col); 
 				console.log("arrivee: n=" + position[indice].n + "col=" + position[indice].col);
 
+				if(position[indiceDepart].n + position[indice].n == 5){
+					var sumCol = detectSummit(position[indiceDepart].col);
+					alert(sumCol);
+					if(sumCol == 'yellow'){
+						yellow_total++;
+						if(pl2color == 'jaune') document.getElementById('nbTower2').innerHTML = yellow_total;
+						else document.getElementById('nbTower1').innerHTML = yellow_total;
+					} 
+					else{
+						red_total++;
+						if(pl2color == 'rouge') document.getElementById('nbTower2').innerHTML = red_total;
+						else document.getElementById('nbTower1').innerHTML = red_total;
+					} 
+				}
+				
 				// Vérification légal (nb) ?
 				if (position[indiceDepart].n + position[indice].n > 5) {
 					console.log("interdiction (nb) ! ");
@@ -159,6 +168,8 @@ les coordonnées correspondent aux centres, en css, on place le côté haut-gauc
 		<button id='buttonConfirm' onclick='confirmPlayer()'>Confirm</button>
 	</div>
 </div>
+
+<div id='errors' style='position:absolute;left:40%;top:30%;font-weight:bold'></div>
 
 <div id='clock' style='position:absolute;text-align:center;min-width:5%;font-size:170%;margin-left:43%;border:2px ridge black;border-radius:20px;background-color:lightblue;display:none'></div>
 
