@@ -46,3 +46,9 @@ function onmouse(type,color){
         });
     }
 }
+
+//know the tower's summit's color
+function detectSummit(color){
+    if(color==1) return 'yellow';
+    else if(color==2) return 'red';
+}
