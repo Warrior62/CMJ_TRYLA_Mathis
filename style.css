@@ -40,6 +40,8 @@ table {width:50%;margin-left:25%;margin-bottom:2%;top:0%}
 
 thead {background-color: lightblue}
 
+form{position:absolute;display:none;border:2px ridge black;width:20%;text-align:center;font-size:150%;padding:0.5% 2% 0.5% 2%;left:37.5%;top:25%}
+
 #errors{position:absolute;left:40%;top:30%;font-weight:bold}
 
 #finishBtn{position:absolute;left:3%;top:20%;padding:0% 1% 0% 1%;height:3%;display:none}
