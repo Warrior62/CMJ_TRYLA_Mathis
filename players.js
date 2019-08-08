@@ -11,6 +11,7 @@ var player1 = document.getElementById('player1');
 var result = document.getElementById('result');
 var yourTurn = document.getElementById('yourTurn');
 var player2turn = document.getElementById('player2Turn');
+var errors = document.getElementById('errors');
 
 //#playerAdded EMPTY//
 playerAdded.innerHTML='';
@@ -43,6 +44,10 @@ function displayResults(){
                         +   '<tr>'
                         +       '<td id=\'result1\'>24</td>'
                         +       '<td id=\'result2\'>24</td>'
+                        +   '</tr>'
+                        +   '<tr>'
+                        +       '<td id=\'nbTower1\'>0</td>'
+                        +       '<td id=\'nbTower2\'>0</td>'
                         +   '</tr>'
                         +'</table>'
                         +'<button style=\'width:10%;margin-left:45%\' onclick=\'optionChosen(this);\'>Start</button>';
@@ -82,7 +87,7 @@ function confirmPlayer(){
 //GAME'S MOTOR//
 function startGame(){
     var audio = new Audio('sound.mp3'); 
-    var cpt_color=detectCptColor();
+    //var cpt_color=detectCptColor();
     show(document.getElementById('avalam'));                            //make avalam support visible
     audio.play(); 
     
@@ -99,6 +104,7 @@ function startGame(){
         show(player2turn);                                              //yourTurn picture is hidden
         hide(yourTurn); 
     } 
+    errors.innerHTML='';
     setTimeout("startGame()",30000);
 }
 
