@@ -170,12 +170,20 @@ les coordonnées correspondent aux centres, en css, on place le côté haut-gauc
 
 <div id='errors'></div>
 
-<button id='finishBtn'>Finish</button>
+<button id='finishBtn' onclick='changePlTurn()'>Finish</button>
 
 <div id='clock'></div>
 
-<img src='pictures/player1.png' id='yourTurn' style='display:none'>
-<img src='pictures/player2.png' id='player2Turn'>
+<img src='pictures/player1.png' id='yourTurn' class='turn' style='display:none'>
+<img src='pictures/player2.png' id='player2Turn' class='turn'>
+
+<form id='form'>
+	<label for='radio'>Do you want to play a game with a limited time ?</label>
+	<div id='radio'>
+		<input type='radio' name='radio' id='radY' value='yes'>Yes</input>
+		<input type='radio' name='radio' id='radN' value='no'>No</input>
+	</div>
+</form>
 
 
 <div id="avalam">
