@@ -58,25 +58,53 @@ $(document).ready(function(){
 				console.log("depart: n=" + position[indiceDepart].n + "col=" + position[indiceDepart].col); 
 				console.log("arrivee: n=" + position[indice].n + "col=" + position[indice].col);
 
-				/*for(i=0; i<topo[indice].adj.length; i++){
-					if(topo[indice].adj[i]==indiceDepart){
-						topo[indice].adj.splice(i,1);
-						console.log(topo[indice].adj);
-						topo[indice].nbVoisins--;
-						console.log('Mon nb de voisins est: '+topo[indice].nbVoisins);
-					} 
-				}	*/
+				changePlTurn();
 
-				for(j=0; j<topo[j].length; j++){
-					console.log(j);
+				for(j=0; j<topo.length; j++){
 					for(k=0; k<topo[j].adj.length; k++){
-						if(topo[j].adj[k]==indiceDepart){
+						if( topo[j].adj[k]==indiceDepart ){
 							topo[j].adj.splice(k,1);
 							topo[j].nbVoisins--;
 						}
+						if( topo[j].nbVoisins==0 ){
+							var sumIsCol = detectSummit(position[j].col);
+							if(sumIsCol == 'yellow'){
+								yellow_total++;
+								if(pl2color == 'jaune') document.getElementById('nbTower2').innerHTML = yellow_total;
+								else document.getElementById('nbTower1').innerHTML = yellow_total;
+							} 
+							else{
+								red_total++;
+								if(pl2color == 'red') document.getElementById('nbTower2').innerHTML = red_total;
+								else document.getElementById('nbTower1').innerHTML = red_total;
+							}
+						}
+						if( topo[j].nbVoisins==1 ){
+							if( position[topo[j].adj[0]].n==4 ){
+								var sumIsCol = detectSummit(position[j].col);
+								if(sumIsCol == 'yellow'){
+									yellow_total++;
+									if(pl2color == 'jaune') document.getElementById('nbTower2').innerHTML = yellow_total;
+									else document.getElementById('nbTower1').innerHTML = yellow_total;
+								} 
+								else{
+									red_total++;
+									if(pl2color == 'red') document.getElementById('nbTower2').innerHTML = red_total;
+									else document.getElementById('nbTower1').innerHTML = red_total;
+								}
+							}
+						}
 					}
 				}
-	
+
+				/*
+				un pion est isolé quand: - il a 0 voisin
+										 - il a 1 voisin et ce voisin est une tour de 5
+										 - il a tous ses voisins qui sont tous des tours de 5
+										 - il a n voisins et ces voisins sont tous des tours de 5
+										 - il a n voisins eux-mêmes isolés
+				*/
+		
 				if(position[indiceDepart].n + position[indice].n == 5){
 					var sumCol = detectSummit(position[indiceDepart].col);
 					if(sumCol == 'yellow'){
@@ -86,7 +114,7 @@ $(document).ready(function(){
 					} 
 					else{
 						red_total++;
-						if(pl2color == 'rouge') document.getElementById('nbTower2').innerHTML = red_total;
+						if(pl2color == 'red') document.getElementById('nbTower2').innerHTML = red_total;
 						else document.getElementById('nbTower1').innerHTML = red_total;
 					} 
 				}
