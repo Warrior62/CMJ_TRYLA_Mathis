@@ -31,6 +31,7 @@ $(document).ready(function(){
 		document.getElementById('errors').innerHTML='';
 		var indice = $(this).data("indice");
 		var pl2color = detectCptColor();
+		var i=0, j=0, k=0;
 		console.log("couleur:" + position[indice].col + " nombre:" + position[indice].n);
 
 		if(position[indice].n == 5) document.getElementById('errors').innerHTML='The tower is full !';
@@ -57,6 +58,25 @@ $(document).ready(function(){
 				console.log("depart: n=" + position[indiceDepart].n + "col=" + position[indiceDepart].col); 
 				console.log("arrivee: n=" + position[indice].n + "col=" + position[indice].col);
 
+				/*for(i=0; i<topo[indice].adj.length; i++){
+					if(topo[indice].adj[i]==indiceDepart){
+						topo[indice].adj.splice(i,1);
+						console.log(topo[indice].adj);
+						topo[indice].nbVoisins--;
+						console.log('Mon nb de voisins est: '+topo[indice].nbVoisins);
+					} 
+				}	*/
+
+				for(j=0; j<topo[j].length; j++){
+					console.log(j);
+					for(k=0; k<topo[j].adj.length; k++){
+						if(topo[j].adj[k]==indiceDepart){
+							topo[j].adj.splice(k,1);
+							topo[j].nbVoisins--;
+						}
+					}
+				}
+	
 				if(position[indiceDepart].n + position[indice].n == 5){
 					var sumCol = detectSummit(position[indiceDepart].col);
 					if(sumCol == 'yellow'){
