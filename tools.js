@@ -50,5 +50,11 @@ function onmouse(type,color){
 //know the tower's summit's color
 function detectSummit(color){
     if(color==1) return 'yellow';
-    else if(color==2) return 'red';
+    else return 'red';
 }
+
+function isFull(depart,arrivee){
+    if(position[depart].n + position[arrivee].n == 5) return true; 
+    else return false;
+}
+
