@@ -24,8 +24,6 @@ $(document).ready(function(){
 	var jaune = $(".jaune"); 
 	var rouge = $(".rouge"); 
 	var n; 
-	var yellow_total=0;
-	var red_total=0;
 
 	$(".col").click(function(){
 		document.getElementById('errors').innerHTML='';
@@ -60,64 +58,102 @@ $(document).ready(function(){
 
 				changePlTurn();
 
-				for(j=0; j<topo.length; j++){
-					for(k=0; k<topo[j].adj.length; k++){
-						if( topo[j].adj[k]==indiceDepart ){
-							topo[j].adj.splice(k,1);
-							topo[j].nbVoisins--;
-						}
-						if( topo[j].nbVoisins==0 ){
-							var sumIsCol = detectSummit(position[j].col);
-							if(sumIsCol == 'yellow'){
-								yellow_total++;
-								if(pl2color == 'jaune') document.getElementById('nbTower2').innerHTML = yellow_total;
-								else document.getElementById('nbTower1').innerHTML = yellow_total;
-							} 
-							else{
-								red_total++;
-								if(pl2color == 'red') document.getElementById('nbTower2').innerHTML = red_total;
-								else document.getElementById('nbTower1').innerHTML = red_total;
+				if( isFull(indiceDepart,indice) ){
+					console.log('<< 1 >>');
+					var sumCol = detectSummit(position[indiceDepart].col);
+					if(sumCol == 'yellow'){
+						if(pl2color == 'jaune') document.getElementById('nbTower2').innerHTML++;
+						else document.getElementById('nbTower1').innerHTML++;
+					} 
+					else{
+						if(pl2color == 'rouge') document.getElementById('nbTower2').innerHTML++;
+						else document.getElementById('nbTower1').innerHTML++;
+					}
+				}
+				else{
+					console.log('<< 2 >>');
+					for(j=0; j<topo.length; j++){
+						var sumIsCol = detectSummit(position[j].col);
+						for(k=0; k<topo[j].adj.length; k++){
+							if( topo[j].adj[k]==indiceDepart ){
+								topo[j].adj.splice(k,1);
+								topo[j].nbVoisins--;
 							}
-						}
-						if( topo[j].nbVoisins==1 ){
-							if( position[topo[j].adj[0]].n==4 ){
-								var sumIsCol = detectSummit(position[j].col);
+							if( topo[j].nbVoisins==0 ){	console.log('<< 2-1 >>');						//if 0 neighbour
 								if(sumIsCol == 'yellow'){
-									yellow_total++;
-									if(pl2color == 'jaune') document.getElementById('nbTower2').innerHTML = yellow_total;
-									else document.getElementById('nbTower1').innerHTML = yellow_total;
+									if(pl2color == 'jaune') document.getElementById('nbTower2').innerHTML++;
+									else document.getElementById('nbTower1').innerHTML++;
 								} 
 								else{
-									red_total++;
-									if(pl2color == 'red') document.getElementById('nbTower2').innerHTML = red_total;
-									else document.getElementById('nbTower1').innerHTML = red_total;
+									if(pl2color == 'rouge') document.getElementById('nbTower2').innerHTML++;
+									else document.getElementById('nbTower1').innerHTML++;
 								}
+								if( position[j].n==5 ){ console.log('<< 2-1-3 >>');
+									if(sumIsCol == 'yellow'){
+										if(pl2color == 'jaune') document.getElementById('nbTower2').innerHTML--;
+										else document.getElementById('nbTower1').innerHTML--;
+									} 
+									else{
+										if(pl2color == 'rouge') document.getElementById('nbTower2').innerHTML--;
+										else document.getElementById('nbTower1').innerHTML--;
+									}
+								}
+							}
+							else if( topo[j].nbVoisins!=0 ){ console.log('<< 2-2 >>');
+								if( topo[j].nbVoisins==1 ){	console.log('<< 2-2-1 >>');						//if 1 neighbour
+									if( position[topo[j].adj[0]].n==4 ){console.log('<< 2-2-1-1 >>');			//if this neighbour is a full tower
+										if(sumIsCol == 'yellow'){
+											if(pl2color == 'jaune') document.getElementById('nbTower2').innerHTML++;
+											else document.getElementById('nbTower1').innerHTML++;
+										} 
+										else{
+											if(pl2color == 'rouge') document.getElementById('nbTower2').innerHTML++;
+											else document.getElementById('nbTower1').innerHTML++;
+										}
+									}
+									else{ console.log('<< 2-2-1 >>');
+										if( position[topo[j].adj[0]].n + position[j].n > 5 ){
+											if(sumIsCol == 'yellow'){
+												if(pl2color == 'jaune') document.getElementById('nbTower2').innerHTML++;
+												else document.getElementById('nbTower1').innerHTML++;
+											} 
+											else{
+												if(pl2color == 'rouge') document.getElementById('nbTower2').innerHTML++;
+												else document.getElementById('nbTower1').innerHTML++;
+											}
+										}
+									}
+								}
+								/*if( topo[j].nbVoisins==2 ){
+									if( position[topo[j].adj[k]].n == 5 ){
+										if(sumIsCol == 'yellow'){
+											if(pl2color == 'jaune') document.getElementById('nbTower2').innerHTML++;
+											else document.getElementById('nbTower1').innerHTML++;
+										} 
+										else{
+											if(pl2color == 'rouge') document.getElementById('nbTower2').innerHTML++;
+											else document.getElementById('nbTower1').innerHTML++;
+										}
+									}
+								}*/
 							}
 						}
 					}
 				}
 
+				
+
+				
 				/*
-				un pion est isolé quand: - il a 0 voisin
-										 - il a 1 voisin et ce voisin est une tour de 5
+				un pion est isolé quand: - il a 0 voisin 											OK
+										 - il a 1 voisin et ce voisin est une tour de 5				
 										 - il a tous ses voisins qui sont tous des tours de 5
 										 - il a n voisins et ces voisins sont tous des tours de 5
 										 - il a n voisins eux-mêmes isolés
 				*/
-		
-				if(position[indiceDepart].n + position[indice].n == 5){
-					var sumCol = detectSummit(position[indiceDepart].col);
-					if(sumCol == 'yellow'){
-						yellow_total++;
-						if(pl2color == 'jaune') document.getElementById('nbTower2').innerHTML = yellow_total;
-						else document.getElementById('nbTower1').innerHTML = yellow_total;
-					} 
-					else{
-						red_total++;
-						if(pl2color == 'red') document.getElementById('nbTower2').innerHTML = red_total;
-						else document.getElementById('nbTower1').innerHTML = red_total;
-					} 
-				}
+
+
+				
 				
 				// Vérification légal (nb) ?
 				if (position[indiceDepart].n + position[indice].n > 5) {
