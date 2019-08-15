@@ -24,16 +24,17 @@ $(document).ready(function(){
 	var jaune = $(".jaune"); 
 	var rouge = $(".rouge"); 
 	var n; 
+	var i=0, j=0, k=0, l=0, m=0;
 
 	$(".col").click(function(){
 		document.getElementById('errors').innerHTML='';
 		var indice = $(this).data("indice");
 		var pl2color = detectCptColor();
-		var i=0, j=0, k=0, l=0, m=0;
+		
 		console.log("couleur:" + position[indice].col + " nombre:" + position[indice].n);
 
 		if(position[indice].n == 5) document.getElementById('errors').innerHTML='The tower is full !';
-
+		
 		if (!modeDeplacement) { // debut deplacement 
 			console.log("debut deplacement");
 			modeDeplacement = true; 
@@ -56,44 +57,22 @@ $(document).ready(function(){
 				console.log("depart: n=" + position[indiceDepart].n + "col=" + position[indiceDepart].col); 
 				console.log("arrivee: n=" + position[indice].n + "col=" + position[indice].col);
 
-				changePlTurn();
+				if(document.getElementById('radN').checked) changePlTurn();
 
-				
-				
-
-				
-
-				if( isFull(indiceDepart,indice) ){
+				if( towerIsFull(indiceDepart,indice) ){										
 					var sumCol = detectSummit(position[indiceDepart].col);
 					increaseScore(sumCol,pl2color);
 				}
-				else{
-					for(j=0; j<topo.length; j++){
-						var sumIsCol = detectSummit(position[j].col);
-						for(k=0; k<topo[j].adj.length; k++){
-							if( topo[j].adj[k]==indiceDepart ){
-								topo[j].adj.splice(k,1);
-								topo[j].nbVoisins--;
-								console.log(l+' a '+topo[l].nbVoisins+' voisins');
-							}
-							if( topo[j].nbVoisins==0 ){						//if 0 neighbour
-								increaseScore(sumIsCol,pl2color);
-								if( position[j].n==5 ) decreaseScore(sumIsCol,pl2color);
-							}
-							else if( topo[j].nbVoisins!=0 ){ 
-								if( topo[j].nbVoisins==1 ){						//if 1 neighbour
-									if( position[topo[j].adj[0]].n==4 ) increaseScore(sumIsCol,pl2color);
-									else{ 
-										if( position[topo[j].adj[0]].n + position[j].n > 5 ) increaseScore(sumIsCol,pl2color);
-									}
-								}
-							}
+
+				for(j=0; j<topo.length; j++){
+					var sumIsCol = detectSummit(position[j].col);
+					for(k=0; k<topo[j].adj.length; k++){
+						if( topo[j].adj[k]==indiceDepart ){								
+							topo[j].adj.splice(k,1);
+							topo[j].nbVoisins--;
 						}
 					}
 				}
-
-				
-
 				
 				/*
 				un pion est isolé quand: - il a 0 voisin 											OK
@@ -102,9 +81,6 @@ $(document).ready(function(){
 										 - il a n voisins eux-mêmes isolés
 				*/
 
-
-				
-				
 				// Vérification légal (nb) ?
 				if (position[indiceDepart].n + position[indice].n > 5) {
 					console.log("interdiction (nb) ! ");
@@ -159,6 +135,8 @@ $(document).ready(function(){
 		} // FIN:fin deplacement
 	});
 
+	
+
 
 	for(i=0;i<topo.length;i++) {
 		if (topo[i].col == "2") 
@@ -204,7 +182,7 @@ les coordonnées correspondent aux centres, en css, on place le côté haut-gauc
 
 <div id='errors'></div>
 
-<button id='finishBtn' onclick='changePlTurn()'>Finish</button>
+<button id='finishBtn' onclick='updateScore(this)'>Finish</button>
 
 <div id='clock'></div>
 
