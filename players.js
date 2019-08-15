@@ -160,8 +160,7 @@ function optionChosen(button){
         if(radY.checked){
             startGame();                    //Game Motor starts
             chrono();                       //a 30seconds chrono starts
-            show(finishButton);  
-            hide(clock);                    
+            show(finishButton);                      
         } 
         else if(radN.checked){
             show(finishButton);

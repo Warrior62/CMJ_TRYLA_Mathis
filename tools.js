@@ -93,4 +93,6 @@ function updateScore(button){
     hide(button);
     hide(yourTurn);
     hide(player2turn);
+    hide(clock);
+    clock.remove(clock);
 }
