@@ -15,6 +15,7 @@ var errors = document.getElementById('errors');
 var finishButton = document.getElementById('finishBtn');
 var radY = document.getElementById('radY');
 var radN = document.getElementById('radN');
+var clock = document.getElementById('clock');
 
 //#playerAdded EMPTY//
 playerAdded.innerHTML='';
@@ -43,10 +44,6 @@ function displayResults(){
                         +               '<option>Yellow</option>'
                         +           '</select>'
                         +       '</td>'
-                        +   '</tr>'
-                        +   '<tr>'
-                        +       '<td id=\'result1\'>24</td>'
-                        +       '<td id=\'result2\'>24</td>'
                         +   '</tr>'
                         +   '<tr>'
                         +       '<td id=\'nbTower1\'>0</td>'
@@ -163,6 +160,8 @@ function optionChosen(button){
         if(radY.checked){
             startGame();                    //Game Motor starts
             chrono();                       //a 30seconds chrono starts
+            show(finishButton);  
+            hide(clock);                    
         } 
         else if(radN.checked){
             show(finishButton);
