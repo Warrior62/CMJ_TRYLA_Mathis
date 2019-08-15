@@ -58,91 +58,35 @@ $(document).ready(function(){
 
 				changePlTurn();
 
-				for(l=0; l<topo.length; l++){
-					for(m=0; m<topo[l].adj.length; m++){
-						if( topo[l].adj[m]==indiceDepart ){
-							topo[l].adj.splice(m,1);
-							topo[l].nbVoisins--;
-						}
-					}
-				}		
+				
+				
+
+				
 
 				if( isFull(indiceDepart,indice) ){
 					var sumCol = detectSummit(position[indiceDepart].col);
-					if(sumCol == 'yellow'){ console.log('tour pleine sommet jaune');
-						if(pl2color == 'jaune') document.getElementById('nbTower2').innerHTML++;
-						else document.getElementById('nbTower1').innerHTML++;
-					} 
-					else{	console.log('tour pleine sommet rouge');
-						if(pl2color == 'rouge') document.getElementById('nbTower2').innerHTML++;
-						else document.getElementById('nbTower1').innerHTML++;
-					}
+					increaseScore(sumCol,pl2color);
 				}
 				else{
 					for(j=0; j<topo.length; j++){
 						var sumIsCol = detectSummit(position[j].col);
 						for(k=0; k<topo[j].adj.length; k++){
-							/*if( topo[j].adj[k]==indiceDepart ){
+							if( topo[j].adj[k]==indiceDepart ){
 								topo[j].adj.splice(k,1);
 								topo[j].nbVoisins--;
-							}*/
+								console.log(l+' a '+topo[l].nbVoisins+' voisins');
+							}
 							if( topo[j].nbVoisins==0 ){						//if 0 neighbour
-								if(sumIsCol == 'yellow'){	console.log('tour isolée sommet jaune');
-									if(pl2color == 'jaune') document.getElementById('nbTower2').innerHTML++;
-									else document.getElementById('nbTower1').innerHTML++;
-								} 
-								else{	console.log('tour isolée sommet rouge');
-									if(pl2color == 'rouge') document.getElementById('nbTower2').innerHTML++;
-									else document.getElementById('nbTower1').innerHTML++;
-								}
-								if( position[j].n==5 ){ 
-									if(sumIsCol == 'yellow'){	console.log('tour isolée pleine sommet jaune');
-										if(pl2color == 'jaune') document.getElementById('nbTower2').innerHTML--;
-										else document.getElementById('nbTower1').innerHTML--;
-									} 
-									else{	console.log('tour isolée pleine sommet rouge');
-										if(pl2color == 'rouge') document.getElementById('nbTower2').innerHTML--;
-										else document.getElementById('nbTower1').innerHTML--;
-									}
-								}
+								increaseScore(sumIsCol,pl2color);
+								if( position[j].n==5 ) decreaseScore(sumIsCol,pl2color);
 							}
 							else if( topo[j].nbVoisins!=0 ){ 
 								if( topo[j].nbVoisins==1 ){						//if 1 neighbour
-									if( position[topo[j].adj[0]].n==4 ){console.log('Mon voisin '+topo[j].adj[0]+' a 5 pions.');			//if this neighbour is a full tower
-										if(sumIsCol == 'yellow'){	console.log('je suis de couleur jaune avec un voisin de 5 pions');
-											if(pl2color == 'jaune') document.getElementById('nbTower2').innerHTML++;
-											else document.getElementById('nbTower1').innerHTML++;
-										} 
-										else{	console.log('je suis de couleur rouge avec un voisin de 5 pions');
-											if(pl2color == 'rouge') document.getElementById('nbTower2').innerHTML++;
-											else document.getElementById('nbTower1').innerHTML++;
-										}
-									}
+									if( position[topo[j].adj[0]].n==4 ) increaseScore(sumIsCol,pl2color);
 									else{ 
-										if( position[topo[j].adj[0]].n + position[j].n > 5 ){
-											if(sumIsCol == 'yellow'){ console.log('je suis de couleur jaune et avec mon voisin c plus de 5');
-												if(pl2color == 'jaune') document.getElementById('nbTower2').innerHTML++;
-												else document.getElementById('nbTower1').innerHTML++;
-											} 
-											else{ console.log('je suis de couleur rouge et avec mon voisin c plus de 5');
-												if(pl2color == 'rouge') document.getElementById('nbTower2').innerHTML++;
-												else document.getElementById('nbTower1').innerHTML++;
-											}
-										}
+										if( position[topo[j].adj[0]].n + position[j].n > 5 ) increaseScore(sumIsCol,pl2color);
 									}
 								}
-								/*if( topo[j].nbVoisins==2 ){
-									if( position[topo[j].adj[k]].n == 5 ){
-										if(sumIsCol == 'yellow'){
-											if(pl2color == 'jaune') document.getElementById('nbTower2').innerHTML++;
-											else document.getElementById('nbTower1').innerHTML++;
-										} 
-										else{
-											if(pl2color == 'rouge') document.getElementById('nbTower2').innerHTML++;
-											else document.getElementById('nbTower1').innerHTML++;
-										}
-									}
-								}*/
 							}
 						}
 					}
@@ -155,7 +99,6 @@ $(document).ready(function(){
 				un pion est isolé quand: - il a 0 voisin 											OK
 										 - il a 1 voisin et ce voisin est une tour de 5				
 										 - il a tous ses voisins qui sont tous des tours de 5
-										 - il a n voisins et ces voisins sont tous des tours de 5
 										 - il a n voisins eux-mêmes isolés
 				*/
 

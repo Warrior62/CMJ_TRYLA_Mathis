@@ -59,3 +59,25 @@ function isFull(depart,arrivee){
 }
 
 
+function increaseScore(summit,color2){
+    if(summit == 'yellow'){
+        if(color2 == 'jaune') document.getElementById('nbTower2').innerHTML++;
+        else document.getElementById('nbTower1').innerHTML++;
+    } 
+    else{	
+        if(color2 == 'rouge') document.getElementById('nbTower2').innerHTML++;
+        else document.getElementById('nbTower1').innerHTML++;
+    }
+}
+
+function decreaseScore(summit,color2){
+    if(summit == 'yellow'){	
+        if(color2 == 'jaune') document.getElementById('nbTower2').innerHTML--;
+        else document.getElementById('nbTower1').innerHTML--;
+    } 
+    else{	
+        if(color2 == 'rouge') document.getElementById('nbTower2').innerHTML--;
+        else document.getElementById('nbTower1').innerHTML--;
+    }
+}
+
