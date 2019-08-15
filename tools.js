@@ -53,7 +53,7 @@ function detectSummit(color){
     else return 'red';
 }
 
-function isFull(depart,arrivee){
+function towerIsFull(depart,arrivee){
     if(position[depart].n + position[arrivee].n == 5) return true; 
     else return false;
 }
@@ -81,3 +81,13 @@ function decreaseScore(summit,color2){
     }
 }
 
+
+function updateScore(){
+    var color2 = detectCptColor();
+    for(a=0; a<topo.length; a++){
+        if( position[a].n!=0 && position[a].n!=5){
+            var summit = detectSummit(position[a].col);
+            increaseScore(summit,color2);
+        }
+    }
+}
