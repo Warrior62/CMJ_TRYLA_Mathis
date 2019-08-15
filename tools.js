@@ -82,7 +82,7 @@ function decreaseScore(summit,color2){
 }
 
 
-function updateScore(){
+function updateScore(button){
     var color2 = detectCptColor();
     for(a=0; a<topo.length; a++){
         if( position[a].n!=0 && position[a].n!=5){
@@ -90,4 +90,7 @@ function updateScore(){
             increaseScore(summit,color2);
         }
     }
+    hide(button);
+    hide(yourTurn);
+    hide(player2turn);
 }
