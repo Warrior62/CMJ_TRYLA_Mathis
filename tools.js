@@ -80,21 +80,3 @@ function decreaseScore(summit,color2){
         else document.getElementById('nbTower1').innerHTML--;
     }
 }
-
-
-function updateScore(button){
-    var color2 = detectCptColor();
-    for(a=0; a<topo.length; a++){
-        if( position[a].n!=0 && position[a].n!=5){
-            var summit = detectSummit(position[a].col);
-            increaseScore(summit,color2);
-        }
-    }
-    hide(button);
-    hide(yourTurn);
-    hide(player2turn);
-    clock.remove(clock);
-
-    restartBtn.innerHTML='<button>Restart</button>'
-                        +'<button>Change player\'s name</button>';
-}

@@ -177,6 +177,35 @@ function optionChosen(button){
 }
 
 
+//restart a new game with the same players
+/*function restart(button){
+    reload(document.getElementById('avalam'));
+    hide(button);
+    hide(document.getElementById('chPl'));
+    show(document.getElementById('form'));
+    show(document.getElementById('startBtn'));
+}*/
+
+
+//display the final result
+function updateScore(button){
+    var color2 = detectCptColor();
+    for(a=0; a<topo.length; a++){
+        if( position[a].n!=0 && position[a].n!=5){
+            var summit = detectSummit(position[a].col);
+            increaseScore(summit,color2);
+        }
+    }
+    hide(button);
+    hide(yourTurn);
+    hide(player2turn);
+    clock.remove(clock);
+
+    restartBtn.innerHTML='<button onclick=\'restart(this)\' id=\'restart\'>Restart</button>'
+                        +'<button onclick=\'location.reload()\' id=\'chPl\'>Change players\' name</button>';
+}
+
+
 
 
 
