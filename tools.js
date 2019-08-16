@@ -94,4 +94,7 @@ function updateScore(button){
     hide(yourTurn);
     hide(player2turn);
     clock.remove(clock);
+
+    restartBtn.innerHTML='<button>Restart</button>'
+                        +'<button>Change player\'s name</button>';
 }
