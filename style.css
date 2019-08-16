@@ -49,3 +49,7 @@ form{position:absolute;display:none;border:2px ridge black;width:20%;text-align:
 #clock{position:absolute;text-align:center;min-width:5%;font-size:170%;margin-left:43%;border:2px ridge black;border-radius:20px;background-color:lightblue;display:none}
 
 #player2Turn{position:absolute;display:none;width:10%;right:2%;top:300px}
+
+#restartBtn{position: absolute;width:30%;margin-left:37.5%;top:15%}
+
+#restartBtn button{width:40%;font-weight:bold}

@@ -20,6 +20,7 @@ var modeDeplacement = false;
 var indiceDepart=false; 
 var colDepart=false;  
 
+
 $(document).ready(function(){
 	var jaune = $(".jaune"); 
 	var rouge = $(".rouge"); 
@@ -61,21 +62,21 @@ $(document).ready(function(){
 
 				if( towerIsFull(indiceDepart,indice) ){										
 					var sumCol = detectSummit(position[indiceDepart].col);
-					increaseScore(sumCol,pl2color);
-				}
+					increaseScore(sumCol,pl2color);							//number of won towers increases 
+				}															// when a tower has 5 pawns
 
 				for(j=0; j<topo.length; j++){
 					var sumIsCol = detectSummit(position[j].col);
 					for(k=0; k<topo[j].adj.length; k++){
-						if( topo[j].adj[k]==indiceDepart ){								
-							topo[j].adj.splice(k,1);
+						if( topo[j].adj[k]==indiceDepart ){					//when a pawn corresponds ton indiceDepart			
+							topo[j].adj.splice(k,1);						// I delete it from neighbors' list
 							topo[j].nbVoisins--;
 						}
 					}
 				}
 				
 				/*
-				un pion est isolé quand: - il a 0 voisin 											OK
+				un pion est isolé quand: - il a 0 voisin 											
 										 - il a 1 voisin et ce voisin est une tour de 5				
 										 - il a tous ses voisins qui sont tous des tours de 5
 										 - il a n voisins eux-mêmes isolés
