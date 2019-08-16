@@ -16,6 +16,7 @@ var finishButton = document.getElementById('finishBtn');
 var radY = document.getElementById('radY');
 var radN = document.getElementById('radN');
 var clock = document.getElementById('clock');
+var restartBtn = document.getElementById('restartBtn');
 
 //#playerAdded EMPTY//
 playerAdded.innerHTML='';
