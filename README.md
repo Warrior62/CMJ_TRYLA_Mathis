@@ -37,4 +37,12 @@ Le fichier avalam.html contient le plateau de jeu interactif Avalam, une div per
 4. Cliquez sur le bouton Start pour commencer la partie.
    Le jeu commence alors !
 
+5. Puis, cliquez sur le bouton Finish lorsqu'aucun coup su
+   pplémentaire n'est possible.
+
+6. Enfin, cliquez sur le bouton Restart si vous désirez refaire un
+   e partie avec les mêmes joueurs, ou cliquez sur le bouto
+   n Change players' name si vous voulez changer les joueur
+   s
+
 ///////////////////////////////////////////////////////////
