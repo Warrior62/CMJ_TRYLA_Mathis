@@ -57,7 +57,7 @@ $(document).ready(function(){
 				console.log("fin de deplacement de " + indiceDepart + " vers " + indice); 
 				console.log("depart: n=" + position[indiceDepart].n + "col=" + position[indiceDepart].col); 
 				console.log("arrivee: n=" + position[indice].n + "col=" + position[indice].col);
-
+				
 				if(document.getElementById('radN').checked) changePlTurn();
 
 				if( towerIsFull(indiceDepart,indice) ){										
@@ -68,7 +68,7 @@ $(document).ready(function(){
 				for(j=0; j<topo.length; j++){
 					var sumIsCol = detectSummit(position[j].col);
 					for(k=0; k<topo[j].adj.length; k++){
-						if( topo[j].adj[k]==indiceDepart ){					//when a pawn corresponds ton indiceDepart			
+						if( topo[j].adj[k]==indiceDepart ){					//when a pawn corresponds to indiceDepart			
 							topo[j].adj.splice(k,1);						// I delete it from neighbors' list
 							topo[j].nbVoisins--;
 						}
@@ -131,13 +131,13 @@ $(document).ready(function(){
 
 				modeDeplacement = false;
 				$(".col").mouseout();
-
+				
 			}	//FIN:validation			
 		} // FIN:fin deplacement
 	});
 
 	
-
+	
 
 	for(i=0;i<topo.length;i++) {
 		if (topo[i].col == "2") 

@@ -200,12 +200,10 @@ function updateScore(button){
     hide(yourTurn);
     hide(player2turn);
     clock.remove(clock);
-
-    restartBtn.innerHTML='<button onclick=\'restart(this)\' id=\'restart\'>Restart</button>'
-                        +'<button onclick=\'location.reload()\' id=\'chPl\'>Change players\' name</button>';
     detectWinner();
-}
 
+    restartBtn.innerHTML='<button onclick=\'location.reload()\' id=\'chPl\'>Change players\' name</button>';
+}
 
 
 

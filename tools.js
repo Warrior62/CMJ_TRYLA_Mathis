@@ -88,6 +88,13 @@ function detectWinner(){
     var pl1 = document.getElementById('td_player1');
     var pl2 = document.getElementById('td_player2');
 
-    if(nbPl1.innerHTML>nbPl2.innerHTML) alert(pl1.innerHTML+' has won !');
-    else if(nbPl1.innerHTML<nbPl2.innerHTML) alert(pl2.innerHTML+' has won !');
+    if( nbPl1.innerHTML>nbPl2.innerHTML ) alert(pl1.innerHTML+' has won !');
+    else if( nbPl1.innerHTML<nbPl2.innerHTML ) alert(pl2.innerHTML+' has won !');
+    else if( nbPl1.innerHTML==nbPl2.innerHTML ) alert('Equality !');
+}
+
+
+function isPl2Turn(){
+    if(document.getElementById('player2Turn').style.display == 'block') return true;
+    else return false;
 }
