@@ -203,6 +203,7 @@ function updateScore(button){
 
     restartBtn.innerHTML='<button onclick=\'restart(this)\' id=\'restart\'>Restart</button>'
                         +'<button onclick=\'location.reload()\' id=\'chPl\'>Change players\' name</button>';
+    detectWinner();
 }
 
 

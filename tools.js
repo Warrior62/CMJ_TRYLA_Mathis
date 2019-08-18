@@ -80,3 +80,14 @@ function decreaseScore(summit,color2){
         else document.getElementById('nbTower1').innerHTML--;
     }
 }
+
+
+function detectWinner(){
+    var nbPl1 = document.getElementById('nbTower1');
+    var nbPl2 = document.getElementById('nbTower2');
+    var pl1 = document.getElementById('td_player1');
+    var pl2 = document.getElementById('td_player2');
+
+    if(nbPl1.innerHTML>nbPl2.innerHTML) alert(pl1.innerHTML+' has won !');
+    else if(nbPl1.innerHTML<nbPl2.innerHTML) alert(pl2.innerHTML+' has won !');
+}
