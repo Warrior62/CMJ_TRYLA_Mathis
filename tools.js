@@ -53,12 +53,13 @@ function detectSummit(color){
     else return 'red';
 }
 
+//know if the tower is composed of 5 pawns
 function towerIsFull(depart,arrivee){
     if(position[depart].n + position[arrivee].n == 5) return true; 
     else return false;
 }
 
-
+//increase number of towers won
 function increaseScore(summit,color2){
     if(summit == 'yellow'){
         if(color2 == 'jaune') document.getElementById('nbTower2').innerHTML++;
@@ -70,6 +71,7 @@ function increaseScore(summit,color2){
     }
 }
 
+//decrease number of towers won
 function decreaseScore(summit,color2){
     if(summit == 'yellow'){	
         if(color2 == 'jaune') document.getElementById('nbTower2').innerHTML--;
@@ -81,7 +83,7 @@ function decreaseScore(summit,color2){
     }
 }
 
-
+//display who is the winner
 function detectWinner(){
     var nbPl1 = document.getElementById('nbTower1');
     var nbPl2 = document.getElementById('nbTower2');
@@ -93,7 +95,7 @@ function detectWinner(){
     else if( nbPl1.innerHTML==nbPl2.innerHTML ) alert('Equality !');
 }
 
-
+//know if it's the second player's turn
 function isPl2Turn(){
     if(document.getElementById('player2Turn').style.display == 'block') return true;
     else return false;
